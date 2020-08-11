@@ -207,6 +207,5 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         {
             Assert.AreEqual(_repositorio.GetAll(), _repositorio.GetByConteudoNoNome(letra));
         }
-
     }
 }
