@@ -18,6 +18,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
     {
         private RepositorioAluno _repositorio = new RepositorioAluno();
         private Aluno _aluno;
+        private List<Aluno> _alunos;
 
         private Aluno CrieAluno(int matricula, string nome, string cpf, string nascimento, int sexo)
         {
@@ -182,6 +183,29 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
                 _repositorio
                 .Get(x => x.Matricula == matricula)
                 .FirstOrDefault());
+        }
+
+        [Then(@"devo receber o mesmo aluno ao pesquisar pelo nome ""(.*)""")]
+        public void EntaoDevoReceberOMesmoAlunoAoPesquisarPeloNome(string nomeDoAluno)
+        {
+            Assert.AreEqual(nomeDoAluno, _repositorio.GetByConteudoNoNome(nomeDoAluno).FirstOrDefault().Nome);
+        }
+
+        [Given(@"introduzo varios alunos")]
+        public void DadoIntroduzoVariosAlunos(Table table)
+        {
+            var rows = table.Rows;
+
+            foreach (var row in rows)
+            {
+                _repositorio.Add(CrieAluno(row));
+            }
+        }
+
+        [Then(@"devo receber todos os alunos ao pesquisar pela letra ""(.*)""")]
+        public void EntaoDevoReceberOsMesmosAlunosAoPesquisarPelaLetra(string letra)
+        {
+            Assert.AreEqual(_repositorio.GetAll(), _repositorio.GetByConteudoNoNome(letra));
         }
 
     }

@@ -40,6 +40,11 @@ namespace ProjetoApresentacaoEM.EM.Repository
             }
         }
 
+        public IEnumerable<Aluno> GetByConteudoNoNome(string parteDoNome)
+        {
+            return Get(x => x.Nome.Contains(parteDoNome));
+        }
+
         protected override Aluno CrieObjeto(object[] campos)
         {
             var sexoInt = Convert.ToInt32(campos[4]);

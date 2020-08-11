@@ -46,3 +46,23 @@ Cenario: Pesquisa por matricula com sucesso com LINQ
 	Exemplos:
 		| matricula | nome | cpf         | nascimento | sexo |
 		| 2         | Joao | 14936735051 | 18/01/1997 | 0    |
+
+@pesquisa
+Cenario: Pesquisa por nome do aluno com sucesso
+	E introduzo as informações de um aluno <matricula> <nome> <cpf> <nascimento> <sexo>
+	Entao o aluno deve ser inserido com sucesso
+	Mas devo receber o mesmo aluno ao pesquisar pelo nome "Fernando"
+
+	Exemplos:
+		| matricula | nome     | cpf         | nascimento | sexo |
+		| 2         | Fernando | 58681179055 | 10/05/1990 | 0    |
+
+@pesquisa
+Cenario: Pesquisa por parte de nomes de alunos com sucesso
+	E introduzo varios alunos
+		| matricula | nome     | cpf         | nascimento | sexo |
+		| 2         | Fernanda | 58681179055 | 10/05/1990 | 1    |
+		| 3         | Joana    | 67266967015 | 07/08/2000 | 1    |
+		| 4         | Joao     | 14936735051 | 18/01/1997 | 0    |
+		| 5         | Ronaldo  | 00274808013 | 05/05/2005 | 0    |
+	Entao devo receber todos os alunos ao pesquisar pela letra "a"
