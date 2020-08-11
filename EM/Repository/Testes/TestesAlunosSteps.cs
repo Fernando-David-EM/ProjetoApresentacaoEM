@@ -129,11 +129,40 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
             _aluno.CPF = cpfExistente;
         }
 
-
         [Then(@"devo receber uma mensagem de erro ao alterar")]
         public void EntaoDevoReceberUmaMensagemDeErroAoAlterar()
         {
             Assert.Throws<FbException>(() => _repositorio.Update(_aluno));
         }
+
+        [Then(@"o aluno deve ser deletado com sucesso")]
+        public void EntaoOAlunoDeveSerDeletadoComSucesso()
+        {
+            _repositorio.Remove(_aluno);
+
+            Assert.IsNull(_repositorio.GetByMatricula(_aluno.Matricula));
+        }
+
+        [Given(@"procuro um aluno com uma (.*) (.*) (.*) (.*) (.*)")]
+        public void DadoProcuroUmAlunoComUma(int matricula, string nome, string cpf, string nascimento, int sexo)
+        {
+            _aluno =
+                   new Aluno
+                   {
+                       Matricula = matricula,
+                       Nome = nome,
+                       CPF = cpf,
+                       Nascimento = DateTime.Parse(nascimento),
+                       Sexo = (EnumeradorSexo)sexo
+                   };
+        }
+
+        [Then(@"devo receber uma mensagem de erro ao remover")]
+        public void EntaoDevoReceberUmaMensagemDeErroAoRemover()
+        {
+            var ex = Assert.Throws<Exception>(() => _repositorio.Remove(_aluno));
+            Assert.AreEqual("Objeto não existe, portanto não pode ser deletado", ex.Message);
+        }
+
     }
 }

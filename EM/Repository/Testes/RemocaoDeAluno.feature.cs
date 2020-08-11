@@ -20,22 +20,22 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.3.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Alteracao de Aluno")]
-    public partial class AlteracaoDeAlunoFeature
+    [NUnit.Framework.DescriptionAttribute("Remocao de Aluno")]
+    public partial class RemocaoDeAlunoFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "AlteracaoDeAluno.feature"
+#line 1 "RemocaoDeAluno.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-BR"), "Alteracao de Aluno", "\tComo um usuario do sistema\r\n\tQuero alterar um aluno\r\n\tNo banco de dados", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-BR"), "Remocao de Aluno", "\tComo um usuario do sistema\r\n\tQuero remover um aluno\r\n\tNo banco de dados", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -83,13 +83,13 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Alteracao com sucesso")]
-        [NUnit.Framework.CategoryAttribute("alteracao")]
-        [NUnit.Framework.TestCaseAttribute("1", "PaulaAlterada", "61399726048", "05/10/1990", "1", null)]
-        public virtual void AlteracaoComSucesso(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Remocao com sucesso")]
+        [NUnit.Framework.CategoryAttribute("remocao")]
+        [NUnit.Framework.TestCaseAttribute("8", "DeletadoSerei", "61181450080", "22/08/1985", "1", null)]
+        public virtual void RemocaoComSucesso(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "alteracao"};
+                    "remocao"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -101,7 +101,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
             argumentsOfScenario.Add("cpf", cpf);
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Alteracao com sucesso", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remocao com sucesso", null, tagsOfScenario, argumentsOfScenario);
 #line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -129,20 +129,23 @@ this.FeatureBackground();
  testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
 #line 13
- testRunner.Then("o aluno deve ser alterado com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+ testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line hidden
+#line 14
+ testRunner.But("o aluno deve ser deletado com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Mas ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Erro novo cpf existente")]
-        [NUnit.Framework.CategoryAttribute("alteracao")]
-        [NUnit.Framework.TestCaseAttribute("7", "JorgeAlterado", "25361727083", "07/08/2000", "0", null)]
-        public virtual void ErroNovoCpfExistente(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Erro matricula inexistente")]
+        [NUnit.Framework.CategoryAttribute("remocao")]
+        [NUnit.Framework.TestCaseAttribute("9", "Joao", "14936735051", "18/01/1997", "0", null)]
+        public virtual void ErroMatriculaInexistente(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "alteracao"};
+                    "remocao"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -154,8 +157,8 @@ this.FeatureBackground();
             argumentsOfScenario.Add("cpf", cpf);
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro novo cpf existente", null, tagsOfScenario, argumentsOfScenario);
-#line 20
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro matricula inexistente", null, tagsOfScenario, argumentsOfScenario);
+#line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -178,14 +181,11 @@ this.ScenarioInitialize(scenarioInfo);
 #line 7
 this.FeatureBackground();
 #line hidden
-#line 21
- testRunner.And(string.Format("introduzo um aluno que tinha um cpf {0} {1} {2} {3} {4}", cpf, matricula, nome, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
 #line 22
- testRunner.And("troco para um \"61399726048\" existente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And(string.Format("procuro um aluno com uma {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
 #line 23
- testRunner.Then("devo receber uma mensagem de erro ao alterar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+ testRunner.Then("devo receber uma mensagem de erro ao remover", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
             }
             this.ScenarioCleanup();

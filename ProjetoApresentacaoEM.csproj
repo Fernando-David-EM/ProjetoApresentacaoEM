@@ -154,6 +154,7 @@
     </Compile>
     <None Include="EM\Repository\Testes\InsercaoDeAluno.feature" />
     <None Include="EM\Repository\Testes\AlteracaoDeAluno.feature" />
+    <None Include="EM\Repository\Testes\RemocaoDeAluno.feature" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

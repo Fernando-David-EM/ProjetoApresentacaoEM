@@ -32,6 +32,20 @@ namespace ProjetoApresentacaoEM.EM.Repository
             command.ExecuteNonQuery();
         }
 
+        public void Remove(T objeto)
+        {
+            DetermineCondicao(objeto);
+
+            using var connection = DataBase.Conecte();
+            using var command = new FbCommand($"DELETE FROM {_nomeDaTabela} WHERE {_nomeDaColunaDeCondicao} = {_condicao}", connection);
+
+            var result = command.ExecuteNonQuery();
+            if (result == 0)
+            {
+                throw new Exception("Objeto não existe, portanto não pode ser deletado");
+            }
+        }
+
         protected abstract void DetermineCondicao(T objeto);
     }
 }
