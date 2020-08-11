@@ -9,7 +9,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A7C147DB-4256-43C6-BA4C-6C5AA6838B73}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>ProjetoApresentacaoEM</RootNamespace>
     <AssemblyName>ProjetoApresentacaoEM</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -39,6 +39,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ProjetoApresentacaoEM.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BoDi, Version=1.4.1.0, Culture=neutral, PublicKeyToken=ff7cd5ea2744b496, processorArchitecture=MSIL">
@@ -135,7 +138,9 @@
     <Compile Include="EM\Domain\IEntidade.cs" />
     <Compile Include="EM\Repository\RepositorioAbstrato.cs" />
     <Compile Include="EM\Repository\RepositorioAluno.cs" />
-    <Compile Include="EM\Repository\Testes\InsercaoDeAlunoSteps.cs" />
+    <Compile Include="EM\Repository\RepositorioHelper.cs" />
+    <Compile Include="EM\Repository\Testes\TesteHelper.cs" />
+    <Compile Include="EM\Repository\Testes\TestesAlunosSteps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -148,6 +153,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="EM\Repository\Testes\InsercaoDeAluno.feature" />
+    <None Include="EM\Repository\Testes\AlteracaoDeAluno.feature" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

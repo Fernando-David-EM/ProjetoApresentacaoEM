@@ -39,7 +39,7 @@ namespace ProjetoApresentacaoEM.EM.Domain
 
         public override string ToString()
         {
-            return $"({Matricula},\'{Nome}\',\'{CPF}\',\'{Nascimento.ToString("yyyy-MM-dd")}\',\'{(int)Sexo}\')";
+            return $"({Matricula},\'{Nome}\',\'{CPF}\',\'{Nascimento.ToString("yyyy-MM-dd")}\',{(int)Sexo})";
         }
     }
 }

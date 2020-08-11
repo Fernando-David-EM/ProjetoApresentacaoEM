@@ -12,17 +12,26 @@ namespace ProjetoApresentacaoEM.EM.Repository
     {
         protected string _nomeDaTabela;
         protected string _colunasDaTabela;
+        protected string _nomeDaColunaDeCondicao;
+        protected string _condicao;
 
         public void Add(T objeto)
         {
             using var connection = DataBase.Conecte();
-            using var command = new FbCommand($"INSERT INTO {_nomeDaTabela} {_colunasDaTabela} VALUES {objeto};", connection);
+            using var command = new FbCommand($"INSERT INTO {_nomeDaTabela} {_colunasDaTabela} VALUES {objeto}", connection);
 
-            var result = command.ExecuteNonQuery();
-            if (result == 0)
-            {
-                throw new Exception("Erro!");
-            }
+            command.ExecuteNonQuery();
         }
+        public void Update(T objeto)
+        {
+            DetermineCondicao(objeto);
+
+            using var connection = DataBase.Conecte();
+            using var command = new FbCommand($"UPDATE {_nomeDaTabela} SET {RepositorioHelper.RecebeSetDoObjeto(_colunasDaTabela, objeto)} WHERE {_nomeDaColunaDeCondicao} = {_condicao}", connection);
+
+            command.ExecuteNonQuery();
+        }
+
+        protected abstract void DetermineCondicao(T objeto);
     }
 }

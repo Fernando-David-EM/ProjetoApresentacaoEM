@@ -14,12 +14,13 @@ namespace ProjetoApresentacaoEM.EM.Repository
         {
             _colunasDaTabela = "(alu_matricula,alu_nome,alu_cpf,alu_nascimento,alu_sexo)";
             _nomeDaTabela = "alunos";
-        }
+            _nomeDaColunaDeCondicao = "alu_matricula";
+    }
 
         public Aluno GetByMatricula(int matricula)
         {
             using var connection = DataBase.Conecte();
-            using var command = new FbCommand($"SELECT * FROM {_nomeDaTabela} WHERE alu_matricula = {matricula};", connection);
+            using var command = new FbCommand($"SELECT * FROM {_nomeDaTabela} WHERE ALU_MATRICULA = {matricula};", connection);
             var reader = command.ExecuteReader();
 
             if (reader.Read())
@@ -37,6 +38,11 @@ namespace ProjetoApresentacaoEM.EM.Repository
             {
                 return null;
             }
+        }
+
+        protected override void DetermineCondicao(Aluno objeto)
+        {
+            _condicao = objeto.Matricula.ToString();
         }
     }
 }
