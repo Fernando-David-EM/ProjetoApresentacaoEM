@@ -139,7 +139,7 @@
     <Compile Include="EM\Repository\RepositorioAbstrato.cs" />
     <Compile Include="EM\Repository\RepositorioAluno.cs" />
     <Compile Include="EM\Repository\RepositorioHelper.cs" />
-    <Compile Include="EM\Repository\Testes\TesteHelper.cs" />
+    <Compile Include="EM\Repository\Testes\TesteCriaDBHelper.cs" />
     <Compile Include="EM\Repository\Testes\TestesAlunosSteps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -154,6 +154,7 @@
     </Compile>
     <None Include="EM\Repository\Testes\InsercaoDeAluno.feature" />
     <None Include="EM\Repository\Testes\AlteracaoDeAluno.feature" />
+    <None Include="EM\Repository\Testes\PesquisaDeAluno.feature" />
     <None Include="EM\Repository\Testes\RemocaoDeAluno.feature" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

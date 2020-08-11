@@ -40,6 +40,20 @@ namespace ProjetoApresentacaoEM.EM.Repository
             }
         }
 
+        protected override Aluno CrieObjeto(object[] campos)
+        {
+            var sexoInt = Convert.ToInt32(campos[4]);
+
+            return new Aluno
+            {
+                Matricula = (int)campos[0],
+                Nome = (string)campos[1],
+                CPF = (string)campos[2],
+                Nascimento = (DateTime)campos[3],
+                Sexo = (EnumeradorSexo)sexoInt
+            };
+        }
+
         protected override void DetermineCondicao(Aluno objeto)
         {
             _condicao = objeto.Matricula.ToString();

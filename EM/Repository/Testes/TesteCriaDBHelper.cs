@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoApresentacaoEM.EM.Repository.Testes
 {
-    class TesteHelper
+    class TesteCriaDBHelper
     {
         public static void AbreBancoParaTestes()
         {

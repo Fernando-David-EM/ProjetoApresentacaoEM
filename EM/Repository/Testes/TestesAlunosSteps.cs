@@ -16,14 +16,37 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
     [Binding]
     class TestesAlunosSteps
     {
-
         private RepositorioAluno _repositorio = new RepositorioAluno();
         private Aluno _aluno;
+
+        private Aluno CrieAluno(int matricula, string nome, string cpf, string nascimento, int sexo)
+        {
+            return new Aluno
+            {
+                Matricula = matricula,
+                Nome = nome,
+                CPF = cpf,
+                Nascimento = DateTime.Parse(nascimento),
+                Sexo = (EnumeradorSexo)sexo
+            };
+        }
+
+        private Aluno CrieAluno(TableRow row)
+        {
+            return new Aluno
+            {
+                Matricula = Convert.ToInt32(row.ElementAtOrDefault(0).Value),
+                Nome = row.ElementAtOrDefault(1).Value,
+                CPF = row.ElementAtOrDefault(2).Value,
+                Nascimento = DateTime.Parse(row.ElementAtOrDefault(3).Value),
+                Sexo = (EnumeradorSexo)Convert.ToInt32(row.ElementAtOrDefault(4).Value)
+            };
+        }
 
         [Given(@"que estou conectado no banco de dados")]
         public void DadoQueEstouConectadoNoBancoDeDados()
         {
-            TesteHelper.AbreBancoParaTestes(); // da delete nos campos e seta para satisfazer as condiçoes dos testes
+            TesteCriaDBHelper.AbreBancoParaTestes(); // da delete nos campos e seta para satisfazer as condiçoes dos testes
 
             Assert.IsNotNull(DataBase.Conecte());
         }
@@ -31,15 +54,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         [Given(@"introduzo as informações de um aluno (.*) (.*) (.*) (.*) (.*)")]
         public void DadoIntroduzoAsInformacoesDeUmAluno(int matricula, string nome, string cpf, string nascimento, int sexo)
         {
-            _aluno =
-                new Aluno
-                {
-                    Matricula = matricula,
-                    Nome = nome,
-                    CPF = cpf,
-                    Nascimento = DateTime.Parse(nascimento),
-                    Sexo = (EnumeradorSexo)sexo
-                };
+            _aluno = CrieAluno(matricula, nome, cpf, nascimento, sexo);
         }
 
         [Then(@"o aluno deve ser inserido com sucesso")]
@@ -53,29 +68,13 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         [Given(@"introduzo um aluno com uma (.*) existente (.*) (.*) (.*) (.*)")]
         public void DadoIntroduzoOMesmoAluno(int matricula, string nome, string cpf, string nascimento, int sexo)
         {
-            _aluno =
-                new Aluno
-                {
-                    Matricula = matricula,
-                    Nome = nome,
-                    CPF = cpf,
-                    Nascimento = DateTime.Parse(nascimento),
-                    Sexo = (EnumeradorSexo)sexo
-                };
+            _aluno = CrieAluno(matricula, nome, cpf, nascimento, sexo);
         }
 
         [Given(@"introduzo um aluno com um (.*) existente (.*) (.*) (.*) (.*)")]
         public void DadoIntroduzoUmAlunoComUmExistente(string cpf, int matricula, string nome, string nascimento, int sexo)
         {
-            _aluno =
-                new Aluno
-                {
-                    Matricula = matricula,
-                    Nome = nome,
-                    CPF = cpf,
-                    Nascimento = DateTime.Parse(nascimento),
-                    Sexo = (EnumeradorSexo)sexo
-                };
+            _aluno = CrieAluno(matricula, nome, cpf, nascimento, sexo);
         }
 
 
@@ -96,29 +95,13 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         [Given(@"introduzo um aluno com o (.*) diferente de um (.*) (.*) (.*) (.*)")]
         public void DadoIntroduzoUmAlunoComOMaiorQue(int sexo, int matricula, string nome, string cpf, string nascimento)
         {
-            _aluno =
-                   new Aluno
-                   {
-                       Matricula = matricula,
-                       Nome = nome,
-                       CPF = cpf,
-                       Nascimento = DateTime.Parse(nascimento),
-                       Sexo = (EnumeradorSexo)sexo
-                   };
+            _aluno = CrieAluno(matricula, nome, cpf, nascimento, sexo);
         }
 
         [Given(@"introduzo um aluno que tinha um cpf (.*) (.*) (.*) (.*) (.*)")]
         public void DadoIntroduzoUmAlunoQueTinhaUmCpf(string cpf, int matricula, string nome, string nascimento, int sexo)
         {
-            _aluno =
-                      new Aluno
-                      {
-                          Matricula = matricula,
-                          Nome = nome,
-                          CPF = cpf,
-                          Nascimento = DateTime.Parse(nascimento),
-                          Sexo = (EnumeradorSexo)sexo
-                      };
+            _aluno = CrieAluno(matricula, nome, cpf, nascimento, sexo);
 
             _repositorio.Add(_aluno);
         }
@@ -146,15 +129,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         [Given(@"procuro um aluno com uma (.*) (.*) (.*) (.*) (.*)")]
         public void DadoProcuroUmAlunoComUma(int matricula, string nome, string cpf, string nascimento, int sexo)
         {
-            _aluno =
-                   new Aluno
-                   {
-                       Matricula = matricula,
-                       Nome = nome,
-                       CPF = cpf,
-                       Nascimento = DateTime.Parse(nascimento),
-                       Sexo = (EnumeradorSexo)sexo
-                   };
+            _aluno = CrieAluno(matricula, nome, cpf, nascimento, sexo);
         }
 
         [Then(@"devo receber uma mensagem de erro ao remover")]
@@ -164,5 +139,39 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
             Assert.AreEqual("Objeto não existe, portanto não pode ser deletado", ex.Message);
         }
 
+        [Given(@"introduzo as informações de um aluno")]
+        public void DadoIntroduzoAsInformacoesDeUmAluno(Table table)
+        {
+            var row = table.Rows[0];
+
+            _aluno = CrieAluno(row);
+        }
+
+        [Then(@"devo ver esses dois ao pesquisar todos")]
+        public void EntaoDevoVerEssesDoisAoPesquisarTodos(Table table)
+        {
+            var row1 = table.Rows[0];
+            var row2 = table.Rows[1];
+
+            var aluno1 = CrieAluno(row1);
+            var aluno2 = CrieAluno(row2);
+
+            var alunosPesquisa = _repositorio.GetAll();
+
+            Assert.AreEqual(aluno1, alunosPesquisa.FirstOrDefault());
+            Assert.AreEqual(aluno2, alunosPesquisa.LastOrDefault());
+        }
+
+        [Then(@"devo receber o mesmo aluno ao pesquisar pela matricula (.*)")]
+        public void EntaoDevoReceberOMesmoAlunoAoPesquisarPela(int matricula)
+        {
+            Assert.AreEqual(_aluno, _repositorio.GetByMatricula(matricula));
+        }
+
+        [Then(@"nada deve acontecer ao procurar por uma matricula (.*)")]
+        public void EntaoNadaDeveAcontecerAoProcurarPorUmaMatricula(int matricula)
+        {
+            Assert.DoesNotThrow(() => _repositorio.GetByMatricula(matricula));
+        }
     }
 }

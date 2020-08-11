@@ -39,13 +39,40 @@ namespace ProjetoApresentacaoEM.EM.Repository
             using var connection = DataBase.Conecte();
             using var command = new FbCommand($"DELETE FROM {_nomeDaTabela} WHERE {_nomeDaColunaDeCondicao} = {_condicao}", connection);
 
-            var result = command.ExecuteNonQuery();
-            if (result == 0)
+            var reader = command.ExecuteNonQuery();
+            if (reader == 0)
             {
                 throw new Exception("Objeto não existe, portanto não pode ser deletado");
             }
         }
 
+        public IEnumerable<T> GetAll()
+        {
+            using var connection = DataBase.Conecte();
+            using var command = new FbCommand($"SELECT * FROM {_nomeDaTabela}", connection);
+
+            var reader = command.ExecuteReader();
+
+            var objects = new List<T>();
+
+            while (reader.Read())
+            {
+                var colunas = GerePropriedadesParaConstrutor(reader);
+
+                objects.Add(CrieObjeto(colunas));
+            }
+
+            return objects;
+        }
+        private object[] GerePropriedadesParaConstrutor(FbDataReader reader)
+        {
+            var colunas = new object[reader.FieldCount];
+            reader.GetValues(colunas);
+
+            return colunas;
+        }
+
         protected abstract void DetermineCondicao(T objeto);
+        protected abstract T CrieObjeto(object[] campos);
     }
 }
