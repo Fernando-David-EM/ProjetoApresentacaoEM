@@ -38,3 +38,42 @@ C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\obj\Debug\ProjetoApr
 C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.exe
 C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.pdb
 C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.CadastroDeAlunos.resources
+E:\Prog\EM\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.csprojAssemblyReference.cache
+E:\Prog\EM\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.Properties.Resources.resources
+E:\Prog\EM\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.csproj.GenerateResource.cache
+E:\Prog\EM\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.csproj.CoreCompileInputs.cache
+E:\Prog\EM\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.exe
+E:\Prog\EM\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.pdb
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\TechTalk.SpecFlow.NUnit.SpecFlowPlugin.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\NUnit3.TestAdapter.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\NUnit3.TestAdapter.pdb
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\nunit.engine.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\nunit.engine.api.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\nunit.engine.core.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\ProjetoApresentacaoEM.exe.config
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\ProjetoApresentacaoEM.exe
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\ProjetoApresentacaoEM.pdb
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\BoDi.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\Cucumber.Messages.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\Dynamitey.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\Gherkin.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\Google.Protobuf.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\nunit.framework.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\SpecFlow.Assist.Dynamic.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\System.ValueTuple.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\TechTalk.SpecFlow.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\Utf8Json.dll
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\BoDi.pdb
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\Google.Protobuf.pdb
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\Google.Protobuf.xml
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\nunit.framework.pdb
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\nunit.framework.xml
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\System.ValueTuple.xml
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\TechTalk.SpecFlow.pdb
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\TechTalk.SpecFlow.xml
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\TechTalk.SpecFlow.NUnit.SpecFlowPlugin.pdb
+E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\Utf8Json.xml
+E:\Prog\EM\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.csproj.CopyComplete

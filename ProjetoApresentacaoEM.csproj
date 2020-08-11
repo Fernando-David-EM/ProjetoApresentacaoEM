@@ -28,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,6 +38,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BoDi, Version=1.4.1.0, Culture=neutral, PublicKeyToken=ff7cd5ea2744b496, processorArchitecture=MSIL">
@@ -127,19 +129,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EM\Domain\Aluno.cs" />
     <Compile Include="EM\Domain\EnumeradorSexo.cs" />
-    <Compile Include="EM\Repository\Testes\CadastrarAlunoSteps.cs" />
-    <Compile Include="EM\WindowsForms\CadastroDeAlunos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EM\WindowsForms\Tela.Designer.cs">
-      <DependentUpon>CadastroDeAlunos.cs</DependentUpon>
-    </Compile>
+    <Compile Include="EM\Repository\DataBase.cs" />
+    <Compile Include="EM\Domain\IEntidade.cs" />
+    <Compile Include="EM\Repository\RepositorioAbstrato.cs" />
+    <Compile Include="EM\Repository\RepositorioAluno.cs" />
+    <Compile Include="EM\Repository\Testes\InsercaoDeAlunoSteps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="EM\WindowsForms\CadastroDeAlunos.resx">
-      <DependentUpon>CadastroDeAlunos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -149,7 +147,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="EM\Repository\Testes\CadastrarAluno.feature" />
+    <None Include="EM\Repository\Testes\InsercaoDeAluno.feature" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -171,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EM\Domain\Testes\" />
+    <Folder Include="EM\WindowsForms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\SpecFlow.3.3.74\build\SpecFlow.targets" Condition="Exists('packages\SpecFlow.3.3.74\build\SpecFlow.targets')" />
