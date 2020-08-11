@@ -173,5 +173,16 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         {
             Assert.DoesNotThrow(() => _repositorio.GetByMatricula(matricula));
         }
+
+        [Then(@"devo receber atraves do LINQ o mesmo aluno ao pesquisar pela matricula (.*)")]
+        public void EntaoDevoReceberAtravesDoLINQOMesmoAlunoAoPesquisarPelaMatricula(int matricula)
+        {
+            Assert.AreEqual(
+                _aluno, 
+                _repositorio
+                .Get(x => x.Matricula == matricula)
+                .FirstOrDefault());
+        }
+
     }
 }

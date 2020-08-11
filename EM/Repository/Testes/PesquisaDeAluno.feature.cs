@@ -266,6 +266,62 @@ this.FeatureBackground();
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Pesquisa por matricula com sucesso com LINQ")]
+        [NUnit.Framework.CategoryAttribute("pesquisa")]
+        [NUnit.Framework.TestCaseAttribute("2", "Joao", "14936735051", "18/01/1997", "0", null)]
+        public virtual void PesquisaPorMatriculaComSucessoComLINQ(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "pesquisa"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("matricula", matricula);
+            argumentsOfScenario.Add("nome", nome);
+            argumentsOfScenario.Add("cpf", cpf);
+            argumentsOfScenario.Add("nascimento", nascimento);
+            argumentsOfScenario.Add("sexo", sexo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pesquisa por matricula com sucesso com LINQ", null, tagsOfScenario, argumentsOfScenario);
+#line 41
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 7
+this.FeatureBackground();
+#line hidden
+#line 42
+ testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
+#line 43
+ testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line hidden
+#line 44
+ testRunner.But("devo receber atraves do LINQ o mesmo aluno ao pesquisar pela matricula 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Mas ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

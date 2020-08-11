@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -64,6 +65,12 @@ namespace ProjetoApresentacaoEM.EM.Repository
 
             return objects;
         }
+
+        public IEnumerable<T> Get(Expression<Func<T, bool>> predicate)
+        {
+            return GetAll().AsQueryable().Where(predicate);
+        }
+
         private object[] GerePropriedadesParaConstrutor(FbDataReader reader)
         {
             var colunas = new object[reader.FieldCount];
