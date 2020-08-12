@@ -143,8 +143,17 @@
     <Compile Include="EM\Util\RepositorioHelper.cs" />
     <Compile Include="EM\Util\TesteCriaDBHelper.cs" />
     <Compile Include="EM\Repository\Testes\TestesDeRepositorioSteps.cs" />
+    <Compile Include="EM\WindowsForms\CadastroDeAlunos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EM\WindowsForms\CadastroDeAlunos.Designer.cs">
+      <DependentUpon>CadastroDeAlunos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EM\WindowsForms\CadastroDeAlunos.resx">
+      <DependentUpon>CadastroDeAlunos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -178,9 +187,7 @@
     <Content Include="AstahFiles\DiagramaProjetos.png" />
     <Content Include="AstahFiles\PrototipoTela.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EM\WindowsForms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\SpecFlow.3.3.74\build\SpecFlow.targets" Condition="Exists('packages\SpecFlow.3.3.74\build\SpecFlow.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
