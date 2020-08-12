@@ -30,10 +30,18 @@ namespace ProjetoApresentacaoEM.EM.Domain
             get { return _cpf; }
             set
             {
-                if (!string.IsNullOrEmpty(value) && !ValidaCpf.EhCpf(value))
-                    throw new Exception("O cpf informado não é válido!");
+                if (string.IsNullOrEmpty(value))
+                {
+                    _cpf = null;
+                }
+                else
+                {
+                    if (!ValidaCpf.EhCpf(value))
+                        throw new Exception("O cpf informado não é válido!");
 
-                _cpf = value;
+                    _cpf = value;
+                }
+                
             } 
         }
         private DateTime _nascimento;

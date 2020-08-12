@@ -92,11 +92,11 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void buttonEstadoEditar_Click(object sender, EventArgs e)
         {
-            DefineEstadoDaTela(EnumeradorEstadosTela.Editar);
+            AlternaEstadoDaTela();
         }
         private void buttonEstadoAdicionar_Click(object sender, EventArgs e)
         {
-            DefineEstadoDaTela(EnumeradorEstadosTela.Adicionar);
+            AlternaEstadoDaTela();
         }
 
         private void buttonLimpar_Click(object sender, EventArgs e)
@@ -109,7 +109,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
         }
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
-            DefineEstadoDaTela(EnumeradorEstadosTela.Adicionar);
+            AlternaEstadoDaTela();
         }
 
         private void buttonAdicionar_Click(object sender, EventArgs e)
@@ -195,7 +195,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void buttonPesquisar_Click(object sender, EventArgs e)
         {
-            CriaBindingSourceAluno(
+            AtribuiListaAoBindingSource(
                 _repositorio
                 .GetByConteudoNoNome(
                     textBoxPesquisar.Text));

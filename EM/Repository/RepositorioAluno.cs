@@ -46,12 +46,18 @@ namespace ProjetoApresentacaoEM.EM.Repository
         protected override Aluno CriaObjeto(object[] campos)
         {
             var sexoInt = Convert.ToInt32(campos[4]);
+            string cpf = "";
+
+            if (!(campos[2] is DBNull))
+            {
+                cpf = (string)campos[2];
+            }
 
             return new Aluno
             (
                 (int)campos[0],
                 (string)campos[1],
-                (string)campos[2],
+                cpf,
                 (DateTime)campos[3],
                 (EnumeradorSexo)sexoInt
             );

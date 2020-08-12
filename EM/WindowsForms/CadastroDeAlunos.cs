@@ -18,16 +18,16 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
     {
         private bool _teclaNaoNumerica = false;
         private bool _teclaEhDeApagar = false;
-        private EnumeradorEstadosTela _estadoTela;
-        private RepositorioAluno _repositorio;
-        private BindingSource _bindingSource;
+        private EnumeradorEstadosTela _estadoTela = EnumeradorEstadosTela.Adicionar;
+        private readonly RepositorioAluno _repositorio = new RepositorioAluno();
+        private readonly BindingSource _bindingSource = new BindingSource();
 
         public CadastroDeAlunos()
         {
             InicializaComponentes();
 
             AtribueEvents();
-            DefineEstadoDaTela(EnumeradorEstadosTela.Adicionar);
+            AlternaEstadoDaTela();
         }
 
         private void InicializaComponentes()
@@ -37,20 +37,18 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             InicializaMascaras();
             InicializaComboBoxSexo();
 
-            _repositorio = new RepositorioAluno();
         }
 
         private void InicializaDataGridView()
         {
+            AtribuiListaAoBindingSource(_repositorio.GetAll());
+
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.DataSource = _bindingSource;
-
-            CriaBindingSourceAluno(_repositorio.GetAll());
         }
 
-        private void CriaBindingSourceAluno(IEnumerable<Aluno> alunos)
+        private void AtribuiListaAoBindingSource(IEnumerable<Aluno> alunos)
         {
-            _bindingSource = new BindingSource();
             var alunosBinding = new BindingList<Aluno>();
 
             foreach (var aluno in alunos)
@@ -85,18 +83,20 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             comboBoxSexo.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        private void DefineEstadoDaTela(EnumeradorEstadosTela enumeradorEstadosTela)
+        private void AlternaEstadoDaTela()
         {
-            _estadoTela = enumeradorEstadosTela;
-
             if (_estadoTela == EnumeradorEstadosTela.Adicionar)
             {
+                _estadoTela = EnumeradorEstadosTela.Editar;
+
                 DefineBotoesAdicionar();
 
                 DefineEventoDeCliqueAdicionar();
             }
             else
             {
+                _estadoTela = EnumeradorEstadosTela.Adicionar;
+
                 DefineBotoesAlterar();
 
                 DefineEventoDeCliqueAlterar();
