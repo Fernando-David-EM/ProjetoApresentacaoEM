@@ -1,5 +1,6 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using ProjetoApresentacaoEM.EM.Domain;
+using ProjetoApresentacaoEM.EM.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;

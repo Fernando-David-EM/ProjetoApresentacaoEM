@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ProjetoApresentacaoEM.EM.Domain
@@ -27,7 +28,8 @@ namespace ProjetoApresentacaoEM.EM.Domain
         private string _cpf;
         public string CPF 
         { 
-            get { return _cpf; }
+            get 
+            { return _cpf; }
             set
             {
                 if (string.IsNullOrEmpty(value))

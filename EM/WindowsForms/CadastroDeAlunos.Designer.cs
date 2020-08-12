@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBoxAluno = new System.Windows.Forms.GroupBox();
             this.textBoxMatricula = new System.Windows.Forms.TextBox();
             this.comboBoxSexo = new System.Windows.Forms.ComboBox();
@@ -47,10 +46,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonEditarAdicionar = new System.Windows.Forms.Button();
             this.buttonExcluir = new System.Windows.Forms.Button();
-            this.repositorioAlunoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxAluno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositorioAlunoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxAluno
@@ -226,10 +223,6 @@
             this.buttonExcluir.UseVisualStyleBackColor = true;
             this.buttonExcluir.Click += new System.EventHandler(this.buttonExcluir_Click);
             // 
-            // repositorioAlunoBindingSource
-            // 
-            this.repositorioAlunoBindingSource.DataSource = typeof(ProjetoApresentacaoEM.EM.Repository.RepositorioAluno);
-            // 
             // CadastroDeAlunos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,7 +240,6 @@
             this.groupBoxAluno.ResumeLayout(false);
             this.groupBoxAluno.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositorioAlunoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,6 +265,5 @@
         private System.Windows.Forms.Button buttonEditarAdicionar;
         private System.Windows.Forms.Button buttonExcluir;
         private System.Windows.Forms.TextBox textBoxMatricula;
-        private System.Windows.Forms.BindingSource repositorioAlunoBindingSource;
     }
 }
