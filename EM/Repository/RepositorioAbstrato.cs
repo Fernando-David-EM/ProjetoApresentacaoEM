@@ -18,16 +18,16 @@ namespace ProjetoApresentacaoEM.EM.Repository
 
         public void Add(T objeto)
         {
-            using var connection = DataBase.Conecte();
+            using var connection = DataBase.AbreConexao();
             using var command = new FbCommand($"INSERT INTO {_nomeDaTabela} {_colunasDaTabela} VALUES {objeto}", connection);
 
             command.ExecuteNonQuery();
         }
         public void Update(T objeto)
         {
-            DetermineCondicao(objeto);
+            DeterminaCondicao(objeto);
 
-            using var connection = DataBase.Conecte();
+            using var connection = DataBase.AbreConexao();
             using var command = new FbCommand($"UPDATE {_nomeDaTabela} SET {RepositorioHelper.RecebeSetDoObjeto(_colunasDaTabela, objeto)} WHERE {_nomeDaColunaDeCondicao} = {_condicao}", connection);
 
             command.ExecuteNonQuery();
@@ -35,9 +35,9 @@ namespace ProjetoApresentacaoEM.EM.Repository
 
         public void Remove(T objeto)
         {
-            DetermineCondicao(objeto);
+            DeterminaCondicao(objeto);
 
-            using var connection = DataBase.Conecte();
+            using var connection = DataBase.AbreConexao();
             using var command = new FbCommand($"DELETE FROM {_nomeDaTabela} WHERE {_nomeDaColunaDeCondicao} = {_condicao}", connection);
 
             var reader = command.ExecuteNonQuery();
@@ -49,7 +49,7 @@ namespace ProjetoApresentacaoEM.EM.Repository
 
         public IEnumerable<T> GetAll()
         {
-            using var connection = DataBase.Conecte();
+            using var connection = DataBase.AbreConexao();
             using var command = new FbCommand($"SELECT * FROM {_nomeDaTabela}", connection);
 
             var reader = command.ExecuteReader();
@@ -58,9 +58,9 @@ namespace ProjetoApresentacaoEM.EM.Repository
 
             while (reader.Read())
             {
-                var colunas = GerePropriedadesParaConstrutor(reader);
+                var colunas = GeraPropriedadesParaConstrutor(reader);
 
-                objects.Add(CrieObjeto(colunas));
+                objects.Add(CriaObjeto(colunas));
             }
 
             return objects;
@@ -71,7 +71,7 @@ namespace ProjetoApresentacaoEM.EM.Repository
             return GetAll().AsQueryable().Where(predicate);
         }
 
-        private object[] GerePropriedadesParaConstrutor(FbDataReader reader)
+        private object[] GeraPropriedadesParaConstrutor(FbDataReader reader)
         {
             var colunas = new object[reader.FieldCount];
             reader.GetValues(colunas);
@@ -79,7 +79,7 @@ namespace ProjetoApresentacaoEM.EM.Repository
             return colunas;
         }
 
-        protected abstract void DetermineCondicao(T objeto);
-        protected abstract T CrieObjeto(object[] campos);
+        protected abstract void DeterminaCondicao(T objeto);
+        protected abstract T CriaObjeto(object[] campos);
     }
 }

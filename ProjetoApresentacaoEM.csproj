@@ -149,6 +149,9 @@
     <Compile Include="EM\WindowsForms\CadastroDeAlunos.Designer.cs">
       <DependentUpon>CadastroDeAlunos.cs</DependentUpon>
     </Compile>
+    <Compile Include="EM\WindowsForms\CadastroDeAlunosEvents.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EM\WindowsForms\EnumeradorEstadosTela.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

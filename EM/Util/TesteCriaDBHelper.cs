@@ -13,7 +13,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         {
             DataBase.Path = @"C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\ESCOLARMANAGERTESTE.FDB";
 
-            using var connection = DataBase.Conecte();
+            using var connection = DataBase.AbreConexao();
             using var commandDelete = new FbCommand("DELETE FROM ALUNOS", connection);
 
             commandDelete.ExecuteNonQuery();

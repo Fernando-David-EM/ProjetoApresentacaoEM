@@ -69,14 +69,14 @@
             this.groupBoxAluno.Controls.Add(this.label1);
             this.groupBoxAluno.Location = new System.Drawing.Point(13, 13);
             this.groupBoxAluno.Name = "groupBoxAluno";
-            this.groupBoxAluno.Size = new System.Drawing.Size(601, 123);
+            this.groupBoxAluno.Size = new System.Drawing.Size(595, 123);
             this.groupBoxAluno.TabIndex = 0;
             this.groupBoxAluno.TabStop = false;
             this.groupBoxAluno.Text = "Novo aluno";
             // 
             // textBoxMatricula
             // 
-            this.textBoxMatricula.Location = new System.Drawing.Point(25, 41);
+            this.textBoxMatricula.Location = new System.Drawing.Point(8, 40);
             this.textBoxMatricula.Name = "textBoxMatricula";
             this.textBoxMatricula.Size = new System.Drawing.Size(99, 20);
             this.textBoxMatricula.TabIndex = 13;
@@ -88,35 +88,35 @@
             this.comboBoxSexo.Items.AddRange(new object[] {
             "Masculino",
             "Feminino"});
-            this.comboBoxSexo.Location = new System.Drawing.Point(25, 90);
+            this.comboBoxSexo.Location = new System.Drawing.Point(8, 88);
             this.comboBoxSexo.Name = "comboBoxSexo";
             this.comboBoxSexo.Size = new System.Drawing.Size(99, 21);
             this.comboBoxSexo.TabIndex = 12;
             // 
             // maskedTextBoxNascimento
             // 
-            this.maskedTextBoxNascimento.Location = new System.Drawing.Point(134, 90);
+            this.maskedTextBoxNascimento.Location = new System.Drawing.Point(117, 89);
             this.maskedTextBoxNascimento.Name = "maskedTextBoxNascimento";
             this.maskedTextBoxNascimento.Size = new System.Drawing.Size(116, 20);
             this.maskedTextBoxNascimento.TabIndex = 11;
             // 
             // textBoxCpf
             // 
-            this.textBoxCpf.Location = new System.Drawing.Point(256, 90);
+            this.textBoxCpf.Location = new System.Drawing.Point(239, 89);
             this.textBoxCpf.Name = "textBoxCpf";
             this.textBoxCpf.Size = new System.Drawing.Size(151, 20);
             this.textBoxCpf.TabIndex = 10;
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(134, 41);
+            this.textBoxNome.Location = new System.Drawing.Point(117, 40);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(461, 20);
             this.textBoxNome.TabIndex = 8;
             // 
             // buttonAdicionarModificar
             // 
-            this.buttonAdicionarModificar.Location = new System.Drawing.Point(509, 87);
+            this.buttonAdicionarModificar.Location = new System.Drawing.Point(492, 86);
             this.buttonAdicionarModificar.Name = "buttonAdicionarModificar";
             this.buttonAdicionarModificar.Size = new System.Drawing.Size(86, 23);
             this.buttonAdicionarModificar.TabIndex = 6;
@@ -125,7 +125,7 @@
             // 
             // buttonLimparCancelar
             // 
-            this.buttonLimparCancelar.Location = new System.Drawing.Point(416, 87);
+            this.buttonLimparCancelar.Location = new System.Drawing.Point(399, 86);
             this.buttonLimparCancelar.Name = "buttonLimparCancelar";
             this.buttonLimparCancelar.Size = new System.Drawing.Size(87, 23);
             this.buttonLimparCancelar.TabIndex = 5;
@@ -135,7 +135,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(265, 74);
+            this.label5.Location = new System.Drawing.Point(248, 73);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(27, 13);
             this.label5.TabIndex = 4;
@@ -144,7 +144,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(131, 74);
+            this.label4.Location = new System.Drawing.Point(114, 73);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 3;
@@ -153,7 +153,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 74);
+            this.label3.Location = new System.Drawing.Point(5, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 2;
@@ -162,7 +162,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(131, 25);
+            this.label2.Location = new System.Drawing.Point(114, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 1;
@@ -171,7 +171,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 25);
+            this.label1.Location = new System.Drawing.Point(5, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 0;
@@ -181,12 +181,12 @@
             // 
             this.textBoxPesquisar.Location = new System.Drawing.Point(13, 145);
             this.textBoxPesquisar.Name = "textBoxPesquisar";
-            this.textBoxPesquisar.Size = new System.Drawing.Size(503, 20);
+            this.textBoxPesquisar.Size = new System.Drawing.Size(486, 20);
             this.textBoxPesquisar.TabIndex = 14;
             // 
             // buttonPesquisar
             // 
-            this.buttonPesquisar.Location = new System.Drawing.Point(522, 145);
+            this.buttonPesquisar.Location = new System.Drawing.Point(505, 145);
             this.buttonPesquisar.Name = "buttonPesquisar";
             this.buttonPesquisar.Size = new System.Drawing.Size(86, 23);
             this.buttonPesquisar.TabIndex = 14;
@@ -198,6 +198,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(13, 171);
             this.dataGridView1.Name = "dataGridView1";

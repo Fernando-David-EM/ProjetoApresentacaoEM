@@ -13,7 +13,7 @@ namespace ProjetoApresentacaoEM.EM.Domain.Testes
     {
         private Aluno _aluno;
 
-        private Aluno CrieAluno(int matricula, string nome, string cpf, string nascimento, int sexo)
+        private Aluno CriaAluno(int matricula, string nome, string cpf, string nascimento, int sexo)
         {
             return new Aluno
             (
@@ -28,7 +28,7 @@ namespace ProjetoApresentacaoEM.EM.Domain.Testes
         [Given(@"que inicio uma instancia com os valores (.*) (.*) (.*) (.*) (.*)")]
         public void DadoQueInicioUmaInstanciaComOsValores(int matricula, string nome, string cpf, string nascimento, int sexo)
         {
-            _aluno = CrieAluno(matricula, nome, cpf, nascimento, sexo);
+            _aluno = CriaAluno(matricula, nome, cpf, nascimento, sexo);
         }
 
         [Then(@"essa instancia deve ser criada")]
@@ -40,7 +40,7 @@ namespace ProjetoApresentacaoEM.EM.Domain.Testes
         [Then(@"devo receber um erro ao criar uma instancia sem nome")]
         public void EntaoDevoReceberUmErroAoCriarEssaInstanciaComOsValores()
         {
-            Assert.Throws<Exception>(() => CrieAluno(0, "", "06424091106", "18/01/1997", 0));
+            Assert.Throws<Exception>(() => CriaAluno(0, "", "06424091106", "18/01/1997", 0));
         }
 
         [Then(@"devo receber um erro ao criar uma instancia com nome gigante")]
@@ -53,19 +53,19 @@ namespace ProjetoApresentacaoEM.EM.Domain.Testes
                 nome += "a";
             }
 
-            Assert.Throws<Exception>(() => CrieAluno(0, nome, "06424091106", "18/01/1997", 0));
+            Assert.Throws<Exception>(() => CriaAluno(0, nome, "06424091106", "18/01/1997", 0));
         }
 
         [Then(@"devo receber um erro ao criar uma instancia com o cpf inválido")]
         public void EntaoDevoReceberUmErroAoCriarUmaInstanciaComOCpfInvalido()
         {
-            Assert.Throws<Exception>(() => CrieAluno(0, "Fernando", "00000000000", "18/01/1997", 0));
+            Assert.Throws<Exception>(() => CriaAluno(0, "Fernando", "00000000000", "18/01/1997", 0));
         }
 
         [Then(@"devo receber um erro ao criar uma instancia com a data ""(.*)""")]
         public void EntaoDevoReceberUmErroAoCriarUmaInstanciaComAData(string data)
         {
-            Assert.Throws<Exception>(() => CrieAluno(0, "Fernando", "06424091106", data, 0));
+            Assert.Throws<Exception>(() => CriaAluno(0, "Fernando", "06424091106", data, 0));
         }
 
     }

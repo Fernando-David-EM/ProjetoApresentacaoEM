@@ -19,7 +19,7 @@ namespace ProjetoApresentacaoEM.EM.Repository
 
         public Aluno GetByMatricula(int matricula)
         {
-            using var connection = DataBase.Conecte();
+            using var connection = DataBase.AbreConexao();
             using var command = new FbCommand($"SELECT * FROM {_nomeDaTabela} WHERE ALU_MATRICULA = {matricula};", connection);
             var reader = command.ExecuteReader();
 
@@ -43,7 +43,7 @@ namespace ProjetoApresentacaoEM.EM.Repository
             return Get(x => x.Nome.ToUpper().Contains(parteDoNome.ToUpper()));
         }
 
-        protected override Aluno CrieObjeto(object[] campos)
+        protected override Aluno CriaObjeto(object[] campos)
         {
             var sexoInt = Convert.ToInt32(campos[4]);
 
@@ -57,7 +57,7 @@ namespace ProjetoApresentacaoEM.EM.Repository
             );
         }
 
-        protected override void DetermineCondicao(Aluno objeto)
+        protected override void DeterminaCondicao(Aluno objeto)
         {
             _condicao = objeto.Matricula.ToString();
         }

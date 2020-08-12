@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Utf8Json;
 
 namespace ProjetoApresentacaoEM.EM.WindowsForms
 {
@@ -23,36 +24,49 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         public CadastroDeAlunos()
         {
-            _repositorio = new RepositorioAluno();
+            InicializaComponentes();
 
-            InitializeComponent();
-            PopuleDataGrid();
-            InicializeMascaras();
-            CrieEvents();
-            InicializeComboBoxSexo();
+            AtribueEvents();
             DefineEstadoDaTela(EnumeradorEstadosTela.Adicionar);
         }
 
-        private void PopuleDataGrid()
+        private void InicializaComponentes()
         {
-            _bindingSource = new BindingSource();
-            var alunos = new BindingList<Aluno>();
-            var alunosRepo = _repositorio.GetAll();
-            foreach (var aluno in alunosRepo)
-            {
-                alunos.Add(aluno);
-            }
+            InitializeComponent();
+            InicializaDataGridView();
+            InicializaMascaras();
+            InicializaComboBoxSexo();
 
-            _bindingSource.DataSource = alunos;
-            dataGridView1.DataSource = _bindingSource;
+            _repositorio = new RepositorioAluno();
         }
 
-        private void InicializeMascaras()
+        private void InicializaDataGridView()
+        {
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.DataSource = _bindingSource;
+
+            CriaBindingSourceAluno(_repositorio.GetAll());
+        }
+
+        private void CriaBindingSourceAluno(IEnumerable<Aluno> alunos)
+        {
+            _bindingSource = new BindingSource();
+            var alunosBinding = new BindingList<Aluno>();
+
+            foreach (var aluno in alunos)
+            {
+                alunosBinding.Add(aluno);
+            }
+
+            _bindingSource.DataSource = alunosBinding;
+        }
+
+        private void InicializaMascaras()
         {
             maskedTextBoxNascimento.Mask = "00/00/0000";
         }
 
-        private void CrieEvents()
+        private void AtribueEvents()
         {
             textBoxMatricula.KeyDown += EhNumero_KeyDown;
             textBoxMatricula.KeyPress += TextBoxMatricula_KeyPress;
@@ -65,75 +79,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             dataGridView1.CellMouseClick += DataGridView1_CellMouseClick;
         }
 
-        private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            var aluno = _bindingSource.Current as Aluno;
-            textBoxMatricula.Text = aluno.Matricula.ToString();
-            textBoxNome.Text = aluno.Nome;
-            comboBoxSexo.SelectedIndex = (int)aluno.Sexo;
-            textBoxCpf.Text = aluno.CPF;
-            maskedTextBoxNascimento.Text = aluno.Nascimento.ToString("dd/MM/yyyy");
-        }
-
-        private void EhNumero_KeyDown(object sender, KeyEventArgs e)
-        {
-            _teclaNaoNumerica = false;
-            _teclaEhDeApagar = false;
-
-            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
-            {
-                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
-                {
-                    if (e.KeyCode != Keys.Back)
-                    {
-                        _teclaNaoNumerica = true;
-                    }
-                }
-            }
-            if (ModifierKeys == Keys.Shift)
-            {
-                _teclaNaoNumerica = true;
-            }
-            if (e.KeyCode == Keys.Back)
-            {
-                _teclaEhDeApagar = true;
-            }
-        }
-
-        private void TextBoxMatricula_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (_teclaNaoNumerica == true)
-            {
-                e.Handled = true;
-            }
-
-            if (textBoxMatricula.TextLength == 9 && !_teclaEhDeApagar)
-            {
-                e.Handled = true;
-            }
-        }
-        private void TextBoxCpf_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (_teclaNaoNumerica == true)
-            {
-                e.Handled = true;
-            }
-
-            if (textBoxCpf.TextLength == 11 && !_teclaEhDeApagar)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void TextBoxNome_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (textBoxNome.TextLength == 100)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void InicializeComboBoxSexo()
+        private void InicializaComboBoxSexo()
         {
             comboBoxSexo.SelectedIndex = 0;
             comboBoxSexo.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -145,133 +91,66 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
             if (_estadoTela == EnumeradorEstadosTela.Adicionar)
             {
-                buttonAdicionarModificar.Text = "Adicionar";
-                buttonLimparCancelar.Text = "Limpar";
-                buttonEditarAdicionar.Text = "Editar";
-                groupBoxAluno.Text = "Novo aluno";
-                textBoxMatricula.Enabled = true;
-                buttonEditarAdicionar.Click += buttonMudarEstadoEditar_Click;
-                buttonEditarAdicionar.Click -= buttonMudarEstadoAdicionar_Click;
-                buttonLimparCancelar.Click += buttonLimpar_Click;
-                buttonLimparCancelar.Click -= buttonCancelar_Click;
-                buttonAdicionarModificar.Click += buttonAdicionar_Click;
-                buttonAdicionarModificar.Click -= buttonEditar_Click;
+                DefineBotoesAdicionar();
+
+                DefineEventoDeCliqueAdicionar();
             }
             else
             {
-                buttonAdicionarModificar.Text = "Modificar";
-                buttonLimparCancelar.Text = "Cancelar";
-                buttonEditarAdicionar.Text = "Adicionar";
-                groupBoxAluno.Text = "Editando aluno";
-                textBoxMatricula.Enabled = false;
-                buttonEditarAdicionar.Click += buttonMudarEstadoAdicionar_Click;
-                buttonEditarAdicionar.Click -= buttonMudarEstadoEditar_Click;
-                buttonLimparCancelar.Click += buttonCancelar_Click;
-                buttonLimparCancelar.Click -= buttonLimpar_Click;
-                buttonAdicionarModificar.Click += buttonEditar_Click;
-                buttonAdicionarModificar.Click -= buttonAdicionar_Click;
+                DefineBotoesAlterar();
+
+                DefineEventoDeCliqueAlterar();
             }
         }
 
-        private void buttonMudarEstadoEditar_Click(object sender, EventArgs e)
+        private void DefineBotoesAdicionar()
         {
-            DefineEstadoDaTela(EnumeradorEstadosTela.Editar);
-        }
-        private void buttonMudarEstadoAdicionar_Click(object sender, EventArgs e)
-        {
-            DefineEstadoDaTela(EnumeradorEstadosTela.Adicionar);
-        }
-
-        private void buttonLimpar_Click(object sender, EventArgs e)
-        {
-            textBoxMatricula.Text = "";
-            textBoxNome.Text = "";
-            comboBoxSexo.SelectedIndex = 0;
-            maskedTextBoxNascimento.Text = "";
-            textBoxCpf.Text = "";
-        }
-        private void buttonCancelar_Click(object sender, EventArgs e)
-        {
-            DefineEstadoDaTela(EnumeradorEstadosTela.Adicionar);
+            buttonAdicionarModificar.Text = "Adicionar";
+            buttonLimparCancelar.Text = "Limpar";
+            buttonEditarAdicionar.Text = "Editar";
+            groupBoxAluno.Text = "Novo aluno";
+            textBoxMatricula.Enabled = true;
         }
 
-        private void buttonAdicionar_Click(object sender, EventArgs e)
+        private void DefineBotoesAlterar()
         {
-            try
-            {
-                var aluno = CrieAlunoBaseadoNosCampos();
-
-                _repositorio.Add(aluno);
-
-                MessageBox.Show("Aluno adicionado com sucesso!");
-                _bindingSource.Add(aluno);
-            }
-            catch (FbException ex)
-            {
-                if (ex.Message.Contains("ALU_MATRICULA"))
-                    MessageBox.Show("Matricula já cadastrada!");
-                else
-                {
-                    if (ex.Message.Contains("ALU_CPF"))
-                        MessageBox.Show("CPF já cadastrado!");
-                    else
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-
-                }
-            }
-
+            buttonAdicionarModificar.Text = "Modificar";
+            buttonLimparCancelar.Text = "Cancelar";
+            buttonEditarAdicionar.Text = "Adicionar";
+            groupBoxAluno.Text = "Editando aluno";
+            textBoxMatricula.Enabled = false;
         }
 
-        private void buttonEditar_Click(object sender, EventArgs e)
+        private void DefineEventoDeCliqueAdicionar()
         {
-            try
-            {
-                var aluno = CrieAlunoBaseadoNosCampos();
-
-                _repositorio.Update(aluno);
-
-                MessageBox.Show("Aluno alterado com sucesso!");
-
-                var pos = _bindingSource.Position;
-
-                _bindingSource.RemoveCurrent();
-                _bindingSource.Insert(pos, aluno);
-            }
-            catch (FbException ex)
-            {
-                if (ex.Message.Contains("ALU_MATRICULA"))
-                    MessageBox.Show("Matricula já cadastrada!");
-                if (ex.Message.Contains("ALU_CPF"))
-                    MessageBox.Show("CPF já cadastrado!");
-            }
+            buttonEditarAdicionar.Click += buttonEstadoEditar_Click;
+            buttonEditarAdicionar.Click -= buttonEstadoAdicionar_Click;
+            buttonLimparCancelar.Click += buttonLimpar_Click;
+            buttonLimparCancelar.Click -= buttonCancelar_Click;
+            buttonAdicionarModificar.Click += buttonAdicionar_Click;
+            buttonAdicionarModificar.Click -= buttonEditar_Click;
         }
 
-        private Aluno CrieAlunoBaseadoNosCampos()
+        private void DefineEventoDeCliqueAlterar()
         {
-            try
-            {
-                VerificaCampos();
+            buttonEditarAdicionar.Click += buttonEstadoAdicionar_Click;
+            buttonEditarAdicionar.Click -= buttonEstadoEditar_Click;
+            buttonLimparCancelar.Click += buttonCancelar_Click;
+            buttonLimparCancelar.Click -= buttonLimpar_Click;
+            buttonAdicionarModificar.Click += buttonEditar_Click;
+            buttonAdicionarModificar.Click -= buttonAdicionar_Click;
+        }
+        private Aluno CriaAlunoBaseadoNosCampos()
+        {
+            VerificaCampos();
 
-                var matricula = Convert.ToInt32(textBoxMatricula.Text);
-                var nome = textBoxNome.Text;
-                var sexo = (EnumeradorSexo)comboBoxSexo.SelectedIndex;
-                var nascimento = DateTime.Parse(maskedTextBoxNascimento.Text);
-                var cpf = textBoxCpf.Text;
+            var matricula = Convert.ToInt32(textBoxMatricula.Text);
+            var nome = textBoxNome.Text;
+            var sexo = (EnumeradorSexo)comboBoxSexo.SelectedIndex;
+            var nascimento = DateTime.Parse(maskedTextBoxNascimento.Text);
+            var cpf = textBoxCpf.Text;
 
-                return new Aluno(matricula, nome, cpf, nascimento, sexo);
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Data inválida!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            return null;
+            return new Aluno(matricula, nome, cpf, nascimento, sexo);
         }
 
         private void VerificaCampos()
@@ -284,35 +163,6 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
                 throw new Exception("Campo Nascimento deve ser preenchido por completo!");
             if (string.IsNullOrEmpty(textBoxNome.Text))
                 throw new Exception("Campo Nome deve ser preenchido!");
-        }
-
-        private void buttonPesquisar_Click(object sender, EventArgs e)
-        {
-            var alunos = new BindingList<Aluno>();
-            var alunosRepo = _repositorio.GetByConteudoNoNome(textBoxPesquisar.Text);
-
-            foreach (var aluno in alunosRepo)
-            {
-                alunos.Add(aluno);
-            }
-
-            _bindingSource.DataSource = alunos;
-            dataGridView1.DataSource = _bindingSource;
-        }
-
-        private void buttonExcluir_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                _repositorio.Remove((Aluno)_bindingSource.Current);
-
-                MessageBox.Show("Aluno excluído com sucesso!");
-                _bindingSource.RemoveCurrent();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
     }
 }
