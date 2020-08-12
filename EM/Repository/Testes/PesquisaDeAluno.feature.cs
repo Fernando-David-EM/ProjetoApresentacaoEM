@@ -35,8 +35,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-BR"), "Pesquisa de Aluno", "\tComo um usuario do sistema\r\n\tQuero pesquisar um ou mais alunos\r\n\tNo banco de dad" +
-                    "os", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-BR"), "Pesquisa de Aluno", "\tQuero pesquisar um ou mais alunos\r\n\tNo banco de dados", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,9 +75,9 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         
         public virtual void FeatureBackground()
         {
-#line 7
+#line 6
 #line hidden
-#line 8
+#line 7
  testRunner.Given("que estou conectado no banco de dados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
         }
@@ -92,7 +91,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
                     "pesquisa"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pesquisa total com sucesso", null, tagsOfScenario, argumentsOfScenario);
-#line 11
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -112,7 +111,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 6
 this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -127,10 +126,10 @@ this.FeatureBackground();
                             "58681179055",
                             "10/05/1990",
                             "0"});
-#line 12
+#line 11
  testRunner.And("introduzo as informações de um aluno", ((string)(null)), table1, "E ");
 #line hidden
-#line 15
+#line 14
  testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -151,7 +150,7 @@ this.FeatureBackground();
                             "58681179055",
                             "10/05/1990",
                             "0"});
-#line 16
+#line 15
  testRunner.But("devo ver esses dois ao pesquisar todos", ((string)(null)), table2, "Mas ");
 #line hidden
             }
@@ -178,7 +177,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pesquisa por matricula com sucesso", null, tagsOfScenario, argumentsOfScenario);
-#line 22
+#line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -198,16 +197,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 6
 this.FeatureBackground();
 #line hidden
-#line 23
+#line 22
  testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 24
+#line 23
  testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
-#line 25
+#line 24
  testRunner.But("devo receber o mesmo aluno ao pesquisar pela matricula 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Mas ");
 #line hidden
             }
@@ -234,7 +233,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pesquisa por matricula errada", null, tagsOfScenario, argumentsOfScenario);
-#line 32
+#line 31
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -254,13 +253,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 6
 this.FeatureBackground();
 #line hidden
-#line 33
+#line 32
  testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 34
+#line 33
  testRunner.Then("nada deve acontecer ao procurar por uma matricula 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
             }
@@ -287,7 +286,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pesquisa por matricula com sucesso com LINQ", null, tagsOfScenario, argumentsOfScenario);
-#line 41
+#line 40
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -307,16 +306,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 6
 this.FeatureBackground();
 #line hidden
-#line 42
+#line 41
  testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 43
+#line 42
  testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
-#line 44
+#line 43
  testRunner.But("devo receber atraves do LINQ o mesmo aluno ao pesquisar pela matricula 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Mas ");
 #line hidden
             }
@@ -343,7 +342,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pesquisa por nome do aluno com sucesso", null, tagsOfScenario, argumentsOfScenario);
-#line 51
+#line 50
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -363,16 +362,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 6
 this.FeatureBackground();
 #line hidden
-#line 52
+#line 51
  testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 53
+#line 52
  testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
-#line 54
+#line 53
  testRunner.But("devo receber o mesmo aluno ao pesquisar pelo nome \"Fernando\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Mas ");
 #line hidden
             }
@@ -388,7 +387,7 @@ this.FeatureBackground();
                     "pesquisa"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pesquisa por parte de nomes de alunos com sucesso", null, tagsOfScenario, argumentsOfScenario);
-#line 61
+#line 60
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -408,7 +407,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 6
 this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -441,10 +440,10 @@ this.FeatureBackground();
                             "00274808013",
                             "05/05/2005",
                             "0"});
-#line 62
+#line 61
  testRunner.And("introduzo varios alunos", ((string)(null)), table3, "E ");
 #line hidden
-#line 68
+#line 67
  testRunner.Then("devo receber todos os alunos ao pesquisar pela letra \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
             }

@@ -1,4 +1,5 @@
 ﻿using ProjetoApresentacaoEM.EM.Repository;
+using ProjetoApresentacaoEM.EM.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,53 @@ namespace ProjetoApresentacaoEM.EM.Domain
 {
     class Aluno : IEntidade
     {
-        public int Matricula { get; set; }
-        public string Nome { get; set; }
-        public string CPF { get; set; }
-        public DateTime Nascimento { get; set; }
+        public int Matricula { get; private set; }
+        private string _nome;
+        public string Nome 
+        { 
+            get { return _nome; }
+            set
+            {
+                if (string.IsNullOrEmpty(value) || value.Length > 100)
+                    throw new Exception("O campo nome deve ter no mínimo 1 caracter e no máximo 100!");
+                
+                _nome = value;
+            }
+        }
+        private string _cpf;
+        public string CPF 
+        { 
+            get { return _cpf; }
+            set
+            {
+                if (!string.IsNullOrEmpty(value) && !ValidaCpf.EhCpf(value))
+                    throw new Exception("O cpf informado não é válido!");
+
+                _cpf = value;
+            } 
+        }
+        private DateTime _nascimento;
+        public DateTime Nascimento 
+        { 
+            get { return _nascimento; }
+            set
+            {
+                if (value.Ticks > DateTime.Now.Ticks)
+                    throw new Exception("A data de nascimento tem que ser no passado!");
+
+                _nascimento = value;
+            }
+        }
         public EnumeradorSexo Sexo { get; set; }
+
+        public Aluno(int matricula, string nome, string cpf, DateTime nascimento, EnumeradorSexo sexo)
+        {
+            Matricula = matricula;
+            Nome = nome;
+            CPF = cpf;
+            Nascimento = nascimento;
+            Sexo = sexo;
+        }
 
         public override bool Equals(object obj)
         {
@@ -39,7 +82,7 @@ namespace ProjetoApresentacaoEM.EM.Domain
 
         public override string ToString()
         {
-            return $"({Matricula},\'{Nome}\',\'{CPF}\',\'{Nascimento.ToString("yyyy-MM-dd")}\',{(int)Sexo})";
+            return $"({Matricula},\'{Nome}\',\'{CPF}\',\'{Nascimento:yyyy-MM-dd}\',{(int)Sexo})";
         }
     }
 }

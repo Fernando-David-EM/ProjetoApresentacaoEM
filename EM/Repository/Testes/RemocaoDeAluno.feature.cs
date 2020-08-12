@@ -35,7 +35,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-BR"), "Remocao de Aluno", "\tComo um usuario do sistema\r\n\tQuero remover um aluno\r\n\tNo banco de dados", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-BR"), "Remocao de Aluno", "\tQuero remover um aluno\r\n\tNo banco de dados", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,9 +75,9 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         
         public virtual void FeatureBackground()
         {
-#line 7
+#line 6
 #line hidden
-#line 8
+#line 7
  testRunner.Given("que estou conectado no banco de dados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
         }
@@ -102,7 +102,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remocao com sucesso", null, tagsOfScenario, argumentsOfScenario);
-#line 11
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -122,16 +122,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 6
 this.FeatureBackground();
 #line hidden
-#line 12
+#line 11
  testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 13
+#line 12
  testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
-#line 14
+#line 13
  testRunner.But("o aluno deve ser deletado com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Mas ");
 #line hidden
             }
@@ -158,7 +158,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro matricula inexistente", null, tagsOfScenario, argumentsOfScenario);
-#line 21
+#line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -178,13 +178,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 6
 this.FeatureBackground();
 #line hidden
-#line 22
+#line 21
  testRunner.And(string.Format("procuro um aluno com uma {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 23
+#line 22
  testRunner.Then("devo receber uma mensagem de erro ao remover", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
             }

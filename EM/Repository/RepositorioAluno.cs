@@ -25,14 +25,12 @@ namespace ProjetoApresentacaoEM.EM.Repository
 
             if (reader.Read())
             {
-                return new Aluno
-                {
-                    Matricula = reader.GetInt32(0),
-                    Nome = reader.GetString(1),
-                    CPF = reader.GetString(2),
-                    Nascimento = reader.GetDateTime(3),
-                    Sexo = (EnumeradorSexo)reader.GetInt32(4)
-                };
+                return new Aluno(
+                    reader.GetInt32(0),
+                    reader.GetString(1),
+                    reader.GetString(2),
+                    reader.GetDateTime(3),
+                    (EnumeradorSexo)reader.GetInt32(4));
             }
             else
             {
@@ -50,13 +48,13 @@ namespace ProjetoApresentacaoEM.EM.Repository
             var sexoInt = Convert.ToInt32(campos[4]);
 
             return new Aluno
-            {
-                Matricula = (int)campos[0],
-                Nome = (string)campos[1],
-                CPF = (string)campos[2],
-                Nascimento = (DateTime)campos[3],
-                Sexo = (EnumeradorSexo)sexoInt
-            };
+            (
+                (int)campos[0],
+                (string)campos[1],
+                (string)campos[2],
+                (DateTime)campos[3],
+                (EnumeradorSexo)sexoInt
+            );
         }
 
         protected override void DetermineCondicao(Aluno objeto)

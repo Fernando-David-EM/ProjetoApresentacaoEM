@@ -134,13 +134,15 @@
   <ItemGroup>
     <Compile Include="EM\Domain\Aluno.cs" />
     <Compile Include="EM\Domain\EnumeradorSexo.cs" />
-    <Compile Include="EM\Repository\DataBase.cs" />
+    <Compile Include="EM\Domain\Testes\TestesDeInstanciaSteps.cs" />
+    <Compile Include="EM\Util\ValidaCpf.cs" />
+    <Compile Include="EM\Util\DataBase.cs" />
     <Compile Include="EM\Domain\IEntidade.cs" />
     <Compile Include="EM\Repository\RepositorioAbstrato.cs" />
     <Compile Include="EM\Repository\RepositorioAluno.cs" />
-    <Compile Include="EM\Repository\RepositorioHelper.cs" />
-    <Compile Include="EM\Repository\Testes\TesteCriaDBHelper.cs" />
-    <Compile Include="EM\Repository\Testes\TestesAlunosSteps.cs" />
+    <Compile Include="EM\Util\RepositorioHelper.cs" />
+    <Compile Include="EM\Util\TesteCriaDBHelper.cs" />
+    <Compile Include="EM\Repository\Testes\TestesDeRepositorioSteps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -152,6 +154,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="EM\Domain\Testes\InstanciarAluno.feature" />
     <None Include="EM\Repository\Testes\InsercaoDeAluno.feature" />
     <None Include="EM\Repository\Testes\AlteracaoDeAluno.feature" />
     <None Include="EM\Repository\Testes\PesquisaDeAluno.feature" />
@@ -176,7 +179,6 @@
     <Content Include="AstahFiles\PrototipoTela.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EM\Domain\Testes\" />
     <Folder Include="EM\WindowsForms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

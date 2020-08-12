@@ -1,6 +1,5 @@
 ﻿#language: pt-BR
 Funcionalidade: Insercao de Aluno
-	Como um usuario do sistema
 	Quero cadastrar um aluno
 	No banco de dados
 

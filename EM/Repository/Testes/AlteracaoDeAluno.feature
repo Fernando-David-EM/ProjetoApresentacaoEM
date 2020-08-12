@@ -1,6 +1,5 @@
 ﻿#language: pt-BR
 Funcionalidade: Alteracao de Aluno
-	Como um usuario do sistema
 	Quero alterar um aluno
 	No banco de dados
 

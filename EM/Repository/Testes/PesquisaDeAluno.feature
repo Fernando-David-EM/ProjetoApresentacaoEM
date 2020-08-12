@@ -1,6 +1,5 @@
 ﻿#language: pt-BR
 Funcionalidade: Pesquisa de Aluno
-	Como um usuario do sistema
 	Quero pesquisar um ou mais alunos
 	No banco de dados
 

@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace ProjetoApresentacaoEM.EM.Repository.Testes
+namespace ProjetoApresentacaoEM.EM.Domain.Testes
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,22 +20,22 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.3.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Insercao de Aluno")]
-    public partial class InsercaoDeAlunoFeature
+    [NUnit.Framework.DescriptionAttribute("Instanciar um Aluno")]
+    public partial class InstanciarUmAlunoFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "InsercaoDeAluno.feature"
+#line 1 "InstanciarAluno.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-BR"), "Insercao de Aluno", "\tQuero cadastrar um aluno\r\n\tNo banco de dados", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-BR"), "Instanciar um Aluno", "\tQuero instanciar um aluno\r\n\tNo código", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -73,36 +73,31 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Instancia criada com sucesso")]
+        [NUnit.Framework.CategoryAttribute("instancia")]
+        [NUnit.Framework.TestCaseAttribute("1", "Fernando", "06424091106", "18/01/1997", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "Fernanda", "58681179055", "10/05/1990", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("3", "Joana", "67266967015", "07/08/2000", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("4", "Joao", "14936735051", "18/01/1997", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("5", "Ronaldo", "00274808013", "05/05/2005", "0", null)]
+        public virtual void InstanciaCriadaComSucesso(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
-#line 6
-#line hidden
+            string[] @__tags = new string[] {
+                    "instancia"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("matricula", matricula);
+            argumentsOfScenario.Add("nome", nome);
+            argumentsOfScenario.Add("cpf", cpf);
+            argumentsOfScenario.Add("nascimento", nascimento);
+            argumentsOfScenario.Add("sexo", sexo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Instancia criada com sucesso", null, tagsOfScenario, argumentsOfScenario);
 #line 7
- testRunner.Given("que estou conectado no banco de dados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
-#line hidden
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Insercao com sucesso")]
-        [NUnit.Framework.CategoryAttribute("insercao")]
-        [NUnit.Framework.TestCaseAttribute("2", "Fernando", "58681179055", "10/05/1990", "0", null)]
-        public virtual void InsercaoComSucesso(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
-        {
-            string[] @__tags = new string[] {
-                    "insercao"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("matricula", matricula);
-            argumentsOfScenario.Add("nome", nome);
-            argumentsOfScenario.Add("cpf", cpf);
-            argumentsOfScenario.Add("nascimento", nascimento);
-            argumentsOfScenario.Add("sexo", sexo);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Insercao com sucesso", null, tagsOfScenario, argumentsOfScenario);
-#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -122,92 +117,97 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
-this.FeatureBackground();
+#line 8
+ testRunner.Given(string.Format("que inicio uma instancia com os valores {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
-#line 11
- testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-#line 12
- testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line 9
+ testRunner.Then("essa instancia deve ser criada", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Erro matricula existente")]
-        [NUnit.Framework.CategoryAttribute("insercao")]
-        [NUnit.Framework.TestCaseAttribute("1", "Joao", "14936735051", "18/01/1997", "0", null)]
-        public virtual void ErroMatriculaExistente(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Erro ao instanciar com nome vazio")]
+        [NUnit.Framework.CategoryAttribute("instancia")]
+        public virtual void ErroAoInstanciarComNomeVazio()
         {
-            string[] @__tags = new string[] {
-                    "insercao"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
+            string[] tagsOfScenario = new string[] {
+                    "instancia"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("matricula", matricula);
-            argumentsOfScenario.Add("nome", nome);
-            argumentsOfScenario.Add("cpf", cpf);
-            argumentsOfScenario.Add("nascimento", nascimento);
-            argumentsOfScenario.Add("sexo", sexo);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro matricula existente", null, tagsOfScenario, argumentsOfScenario);
-#line 19
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 6
-this.FeatureBackground();
-#line hidden
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro ao instanciar com nome vazio", null, tagsOfScenario, argumentsOfScenario);
 #line 20
- testRunner.And(string.Format("introduzo um aluno com uma {0} existente {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
 #line 21
- testRunner.Then("devo receber uma mensagem de erro ao inserir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+ testRunner.Then("devo receber um erro ao criar uma instancia sem nome", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Erro cpf existente")]
-        [NUnit.Framework.CategoryAttribute("insercao")]
-        [NUnit.Framework.TestCaseAttribute("3", "Jorge", "61399726048", "07/08/2000", "0", null)]
-        public virtual void ErroCpfExistente(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Erro ao instanciar com nome grande demais")]
+        [NUnit.Framework.CategoryAttribute("instancia")]
+        public virtual void ErroAoInstanciarComNomeGrandeDemais()
         {
-            string[] @__tags = new string[] {
-                    "insercao"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
+            string[] tagsOfScenario = new string[] {
+                    "instancia"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("matricula", matricula);
-            argumentsOfScenario.Add("nome", nome);
-            argumentsOfScenario.Add("cpf", cpf);
-            argumentsOfScenario.Add("nascimento", nascimento);
-            argumentsOfScenario.Add("sexo", sexo);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro cpf existente", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro ao instanciar com nome grande demais", null, tagsOfScenario, argumentsOfScenario);
+#line 24
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 25
+ testRunner.Then("devo receber um erro ao criar uma instancia com nome gigante", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Erro ao instanciar com cpf inválido")]
+        [NUnit.Framework.CategoryAttribute("instancia")]
+        public virtual void ErroAoInstanciarComCpfInvalido()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "instancia"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro ao instanciar com cpf inválido", null, tagsOfScenario, argumentsOfScenario);
 #line 28
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -228,40 +228,23 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
-this.FeatureBackground();
-#line hidden
 #line 29
- testRunner.And(string.Format("introduzo um aluno com um {0} existente {1} {2} {3} {4}", cpf, matricula, nome, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-#line 30
- testRunner.Then("devo receber uma mensagem de erro ao inserir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+ testRunner.Then("devo receber um erro ao criar uma instancia com o cpf inválido", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Erro sexo maior que 1")]
-        [NUnit.Framework.CategoryAttribute("insercao")]
-        [NUnit.Framework.TestCaseAttribute("4", "Romulo", "00274808013", "05/05/2005", "2", null)]
-        public virtual void ErroSexoMaiorQue1(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Erro ao instanciar com data no futuro")]
+        [NUnit.Framework.CategoryAttribute("instancia")]
+        public virtual void ErroAoInstanciarComDataNoFuturo()
         {
-            string[] @__tags = new string[] {
-                    "insercao"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
+            string[] tagsOfScenario = new string[] {
+                    "instancia"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("matricula", matricula);
-            argumentsOfScenario.Add("nome", nome);
-            argumentsOfScenario.Add("cpf", cpf);
-            argumentsOfScenario.Add("nascimento", nascimento);
-            argumentsOfScenario.Add("sexo", sexo);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro sexo maior que 1", null, tagsOfScenario, argumentsOfScenario);
-#line 37
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro ao instanciar com data no futuro", null, tagsOfScenario, argumentsOfScenario);
+#line 32
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -281,14 +264,8 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
-this.FeatureBackground();
-#line hidden
-#line 38
- testRunner.And(string.Format("introduzo um aluno com o {0} diferente de um {1} {2} {3} {4}", sexo, matricula, nome, cpf, nascimento), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-#line 39
- testRunner.Then("devo receber uma mensagem de erro ao inserir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line 33
+ testRunner.Then("devo receber um erro ao criar uma instancia com a data \"20/12/2030\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
             }
             this.ScenarioCleanup();

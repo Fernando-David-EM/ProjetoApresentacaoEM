@@ -14,34 +14,33 @@ using TechTalk.SpecFlow;
 namespace ProjetoApresentacaoEM.EM.Repository.Testes
 {
     [Binding]
-    class TestesAlunosSteps
+    class TestesDeRepositorioSteps
     {
         private RepositorioAluno _repositorio = new RepositorioAluno();
         private Aluno _aluno;
-        private List<Aluno> _alunos;
 
         private Aluno CrieAluno(int matricula, string nome, string cpf, string nascimento, int sexo)
         {
             return new Aluno
-            {
-                Matricula = matricula,
-                Nome = nome,
-                CPF = cpf,
-                Nascimento = DateTime.Parse(nascimento),
-                Sexo = (EnumeradorSexo)sexo
-            };
+            (
+                matricula,
+                nome,
+                cpf,
+                DateTime.Parse(nascimento),
+                (EnumeradorSexo)sexo
+            );
         }
 
         private Aluno CrieAluno(TableRow row)
         {
             return new Aluno
-            {
-                Matricula = Convert.ToInt32(row.ElementAtOrDefault(0).Value),
-                Nome = row.ElementAtOrDefault(1).Value,
-                CPF = row.ElementAtOrDefault(2).Value,
-                Nascimento = DateTime.Parse(row.ElementAtOrDefault(3).Value),
-                Sexo = (EnumeradorSexo)Convert.ToInt32(row.ElementAtOrDefault(4).Value)
-            };
+            (
+                Convert.ToInt32(row.ElementAtOrDefault(0).Value),
+                row.ElementAtOrDefault(1).Value,
+                row.ElementAtOrDefault(2).Value,
+                DateTime.Parse(row.ElementAtOrDefault(3).Value),
+                (EnumeradorSexo)Convert.ToInt32(row.ElementAtOrDefault(4).Value)
+            );
         }
 
         [Given(@"que estou conectado no banco de dados")]

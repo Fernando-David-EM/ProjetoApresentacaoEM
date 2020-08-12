@@ -11,7 +11,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
     {
         public static void AbreBancoParaTestes()
         {
-            DataBase.Path = @"C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\ESCOLARMANAGERTESTE.FDB";
+            DataBase.Path = @"E:\Prog\EM\ProjetoApresentacaoEM\ESCOLARMANAGERTESTE.FDB";
 
             using var connection = DataBase.Conecte();
             using var commandDelete = new FbCommand("DELETE FROM ALUNOS", connection);

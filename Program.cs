@@ -1,5 +1,6 @@
 ﻿using ProjetoApresentacaoEM.EM.Domain;
 using ProjetoApresentacaoEM.EM.Repository;
+using ProjetoApresentacaoEM.EM.WindowsForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,18 +16,9 @@ namespace ProjetoApresentacaoEM
         /// </summary>
         static void Main()
         {
-            var aluno = new Aluno
-            {
-                Matricula = 1,
-                Nome = "Fernando",
-                CPF = "06424091106",
-                Nascimento = DateTime.Parse("18/01/1997"),
-                Sexo = EnumeradorSexo.Masculino
-            };
-
-            var colunas = "(alu_matricula,alu_nome,alu_cpf,alu_nascimento,alu_sexo)";
-
-            Console.WriteLine(RepositorioHelper.RecebeSetDoObjeto(colunas, aluno));
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new CadastroDeAlunos());
         }
     }
 }

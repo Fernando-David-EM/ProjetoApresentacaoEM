@@ -1,6 +1,5 @@
 ﻿#language: pt-BR
 Funcionalidade: Remocao de Aluno
-	Como um usuario do sistema
 	Quero remover um aluno
 	No banco de dados
 
