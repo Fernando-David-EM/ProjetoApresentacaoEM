@@ -40,7 +40,7 @@ namespace ProjetoApresentacaoEM.EM.Repository
 
         public IEnumerable<Aluno> GetByConteudoNoNome(string parteDoNome)
         {
-            return Get(x => x.Nome.Contains(parteDoNome));
+            return Get(x => x.Nome.ToUpper().Contains(parteDoNome.ToUpper()));
         }
 
         protected override Aluno CrieObjeto(object[] campos)

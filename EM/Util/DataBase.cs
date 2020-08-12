@@ -9,7 +9,7 @@ namespace ProjetoApresentacaoEM.EM.Repository
 {
     class DataBase
     {
-        public static string Path { get; set; } = @"E:\Prog\EM\ProjetoApresentacaoEM\ESCOLARMANAGER.FDB";
+        public static string Path { get; set; } = @"C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\ESCOLARMANAGER.FDB";
         public static FbConnection Conecte()
         {
             var conexao = new FbConnection(

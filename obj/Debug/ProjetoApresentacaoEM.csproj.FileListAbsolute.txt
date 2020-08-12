@@ -76,3 +76,4 @@ E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\TechTalk.SpecFlow.xml
 E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\TechTalk.SpecFlow.NUnit.SpecFlowPlugin.pdb
 E:\Prog\EM\ProjetoApresentacaoEM\bin\Debug\Utf8Json.xml
 E:\Prog\EM\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.csproj.CopyComplete
+C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.EM.WindowsForms.CadastroDeAlunos.resources
