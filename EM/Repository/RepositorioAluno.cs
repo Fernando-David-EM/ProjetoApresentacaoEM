@@ -1,4 +1,5 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
+using ProjetoApresentacaoEM.EM.DbContext;
 using ProjetoApresentacaoEM.EM.Domain;
 using ProjetoApresentacaoEM.EM.Util;
 using System;
@@ -11,17 +12,14 @@ namespace ProjetoApresentacaoEM.EM.Repository
 {
     class RepositorioAluno : RepositorioAbstrato<Aluno>
     {
-        public RepositorioAluno()
+        public RepositorioAluno() : base(new DbSetAluno())
         {
-            _colunasDaTabela = "(alu_matricula,alu_nome,alu_cpf,alu_nascimento,alu_sexo)";
-            _nomeDaTabela = "alunos";
-            _nomeDaColunaDeCondicao = "alu_matricula";
-    }
 
+        }
         public Aluno GetByMatricula(int matricula)
         {
             using var connection = DataBase.AbreConexao();
-            using var command = new FbCommand($"SELECT * FROM {_nomeDaTabela} WHERE ALU_MATRICULA = {matricula};", connection);
+            using var command = new FbCommand($"SELECT * FROM ALUNOS WHERE ALU_MATRICULA = {matricula};", connection);
             var reader = command.ExecuteReader();
 
             if (reader.Read())
@@ -42,31 +40,6 @@ namespace ProjetoApresentacaoEM.EM.Repository
         public IEnumerable<Aluno> GetByConteudoNoNome(string parteDoNome)
         {
             return Get(x => x.Nome.ToUpper().Contains(parteDoNome.ToUpper()));
-        }
-
-        protected override Aluno CriaObjeto(object[] campos)
-        {
-            var sexoInt = Convert.ToInt32(campos[4]);
-            string cpf = "";
-
-            if (!(campos[2] is DBNull))
-            {
-                cpf = (string)campos[2];
-            }
-
-            return new Aluno
-            (
-                (int)campos[0],
-                (string)campos[1],
-                cpf,
-                (DateTime)campos[3],
-                (EnumeradorSexo)sexoInt
-            );
-        }
-
-        protected override void DeterminaCondicao(Aluno objeto)
-        {
-            _condicao = objeto.Matricula.ToString();
         }
     }
 }
