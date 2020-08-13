@@ -1,6 +1,7 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using ProjetoApresentacaoEM.EM.Domain;
 using ProjetoApresentacaoEM.EM.Repository;
+using ProjetoApresentacaoEM.EM.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -147,7 +148,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             var nome = textBoxNome.Text;
             var sexo = (EnumeradorSexo)comboBoxSexo.SelectedIndex;
             var nascimento = DateTime.Parse(maskedTextBoxNascimento.Text);
-            var cpf = textBoxCpf.Text;
+            var cpf = Formata.AdicionaPontuacaoCpf(textBoxCpf.Text);
 
             return new Aluno(matricula, nome, cpf, nascimento, sexo);
         }

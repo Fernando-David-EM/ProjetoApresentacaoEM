@@ -1,5 +1,6 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using ProjetoApresentacaoEM.EM.Domain;
+using ProjetoApresentacaoEM.EM.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             textBoxMatricula.Text = aluno.Matricula.ToString();
             textBoxNome.Text = aluno.Nome;
             comboBoxSexo.SelectedIndex = (int)aluno.Sexo;
-            textBoxCpf.Text = aluno.CPF;
+            textBoxCpf.Text = Formata.RemovePontuacaoCpf(aluno.CPF);
             maskedTextBoxNascimento.Text = aluno.Nascimento.ToString("dd/MM/yyyy");
         }
 
