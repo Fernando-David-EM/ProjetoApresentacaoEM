@@ -135,7 +135,6 @@
     <Compile Include="EM\Domain\Aluno.cs" />
     <Compile Include="EM\Domain\EnumeradorSexo.cs" />
     <Compile Include="EM\Domain\Testes\TestesDeInstanciaSteps.cs" />
-    <Compile Include="EM\Util\Formata.cs" />
     <Compile Include="EM\Util\ValidaCpf.cs" />
     <Compile Include="EM\Util\DataBase.cs" />
     <Compile Include="EM\Domain\IEntidade.cs" />

@@ -25,9 +25,6 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
         public CadastroDeAlunos()
         {
             InicializaComponentes();
-
-            AtribueEvents();
-            AlternaEstadoDaTela();
         }
 
         private void InicializaComponentes()
@@ -36,7 +33,9 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             InicializaDataGridView();
             InicializaMascaras();
             InicializaComboBoxSexo();
+            InicializaEvents();
 
+            AlternaEstadoDaTela();
         }
 
         private void InicializaDataGridView()
@@ -64,7 +63,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             maskedTextBoxNascimento.Mask = "00/00/0000";
         }
 
-        private void AtribueEvents()
+        private void InicializaEvents()
         {
             textBoxMatricula.KeyDown += EhNumero_KeyDown;
             textBoxMatricula.KeyPress += TextBoxMatricula_KeyPress;
