@@ -133,7 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EM\DbContext\Context.cs" />
-    <Compile Include="EM\DbContext\DbSetAluno.cs" />
+    <Compile Include="EM\DbContext\DbSet.cs" />
     <Compile Include="EM\DbContext\IDbSet.cs" />
     <Compile Include="EM\Domain\Aluno.cs" />
     <Compile Include="EM\Domain\EnumeradorSexo.cs" />

@@ -1,5 +1,6 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using ProjetoApresentacaoEM.EM.DbContext;
+using ProjetoApresentacaoEM.EM.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace ProjetoApresentacaoEM.EM.Repository
 {
-    abstract class RepositorioAbstrato<T> where T : IEntidade
+    abstract class RepositorioAbstrato<T> where T : IEntidade, new()
     {
         protected readonly Context _context = new Context();
-        protected readonly IDbSet<T> _table;
+        protected readonly DbSet<T> _table;
 
-        public RepositorioAbstrato(IDbSet<T> table)
+        protected RepositorioAbstrato()
         {
-            _table = table;
+            _table = _context.Set<T>();
         }
 
         public void Add(T objeto)

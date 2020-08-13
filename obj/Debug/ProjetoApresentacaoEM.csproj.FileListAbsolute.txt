@@ -76,3 +76,4 @@ C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\obj\Debug\ProjetoApr
 C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.csproj.CopyComplete
 C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.exe
 C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.pdb
+C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\obj\Debug\ProjetoApresentacaoEM.csprojAssemblyReference.cache

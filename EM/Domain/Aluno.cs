@@ -60,6 +60,11 @@ namespace ProjetoApresentacaoEM.EM.Domain
         }
         public EnumeradorSexo Sexo { get; set; }
 
+        public Aluno()
+        {
+
+        }
+
         public Aluno(int matricula, string nome, string cpf, DateTime nascimento, EnumeradorSexo sexo)
         {
             Matricula = matricula;

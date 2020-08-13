@@ -10,14 +10,9 @@ namespace ProjetoApresentacaoEM.EM.DbContext
 {
     class Context
     {
-        public IDbSet<IEntidade> Set<T>()
+        public DbSet<T> Set<T>() where T : IEntidade, new()
         {
-            if (typeof(T) == typeof(Aluno))
-            {
-                return new DbSetAluno() as IDbSet<IEntidade>;
-            }
-
-            throw new Exception("Tipo não conhecido!");
+            return new DbSet<T>();
         }
     }
 }
