@@ -4,6 +4,7 @@ using ProjetoApresentacaoEM.EM.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -120,16 +121,19 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             _repositorio.Add(aluno);
 
             MessageBox.Show("Aluno adicionado com sucesso!");
+
             _bindingSource.Add(aluno);
+
+            InicializaDataGridView();
         }
 
         private void TrateFbException(FbException ex)
         {
-            if (ex.Message.Contains("ALU_MATRICULA"))
+            if (ex.Message.Contains("MATRICULA"))
                 MessageBox.Show("Matricula já cadastrada!");
             else
             {
-                if (ex.Message.Contains("ALU_CPF"))
+                if (ex.Message.Contains("CPF"))
                     MessageBox.Show("CPF já cadastrado!");
                 else
                 {
@@ -171,6 +175,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
             _bindingSource.RemoveCurrent();
             _bindingSource.Insert(pos, aluno);
+            _bindingSource.Position = pos;
         }
 
         private void buttonPesquisar_Click(object sender, EventArgs e)

@@ -40,7 +40,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void InicializaDataGridView()
         {
-            AtribuiListaAoBindingSource(_repositorio.GetAll());
+            AtribuiListaAoBindingSource(_repositorio.GetAll().OrderBy(x => x.Matricula));
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.DataSource = _bindingSource;
@@ -48,14 +48,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void AtribuiListaAoBindingSource(IEnumerable<Aluno> alunos)
         {
-            var alunosBinding = new BindingList<Aluno>();
-
-            foreach (var aluno in alunos)
-            {
-                alunosBinding.Add(aluno);
-            }
-
-            _bindingSource.DataSource = alunosBinding;
+            _bindingSource.DataSource = alunos;
         }
 
         private void InicializaMascaras()
