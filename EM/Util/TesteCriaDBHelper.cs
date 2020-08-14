@@ -11,14 +11,14 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
     {
         public static void AbreBancoParaTestes()
         {
-            DataBase.Path = @"C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\ESCOLARMANAGERTESTE.FDB";
+            DataBase.Path = @"C:\Users\Escolar Manager\source\repos\ProjetoApresentacaoEM\TESTEREFLECTIONDBCONTEXT.FDB";
 
             using var connection = DataBase.AbreConexao();
-            using var commandDelete = new FbCommand("DELETE FROM ALUNOS", connection);
+            using var commandDelete = new FbCommand("DELETE FROM ALUNO", connection);
 
             commandDelete.ExecuteNonQuery();
 
-            using var commandInsert = new FbCommand("INSERT INTO ALUNOS (ALU_MATRICULA,ALU_NOME,ALU_CPF,ALU_NASCIMENTO,ALU_SEXO) VALUES (1,'Paula','61399726048','1990-10-05',1)", connection);
+            using var commandInsert = new FbCommand("INSERT INTO ALUNO (MATRICULA,NOME,CPF,NASCIMENTO,SEXO) VALUES (1,'Paula','613.997.260-48','1990-10-05',1)", connection);
 
             commandInsert.ExecuteNonQuery();
         }

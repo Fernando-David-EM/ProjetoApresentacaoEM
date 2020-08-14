@@ -5,6 +5,7 @@ using System;
 using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
@@ -13,17 +14,21 @@ using System.Threading.Tasks;
 
 namespace ProjetoApresentacaoEM.EM.DbContext
 {
-    abstract class DbSet<T> : IDbSet<T> where T : IEntidade, new()
+    class DbSet<T> : IDbSet<T> where T : IEntidade, new()
     {
-        protected List<T> _entities = new List<T>();
-        protected Type _entityType = typeof(T);
+        protected List<T> _entities;
+        protected Type _entityType;
         protected List<string> _entityPropertyNames;
         protected string _entityColumns;
-        protected string _entityName = typeof(T).GetType().Name;
+        protected string _entityName;
 
         public DbSet()
         {
-            _entityPropertyNames = typeof(T).GetProperties().Select(p => p.Name).ToList();
+            _entities = new List<T>();
+            var type = new T();
+            _entityType = type.GetType();
+            _entityName = _entityType.Name;
+            _entityPropertyNames = _entityType.GetProperties().Select(p => p.Name).ToList();
             _entityColumns = string.Join(",", _entityPropertyNames);
 
             FillList();
@@ -38,23 +43,32 @@ namespace ProjetoApresentacaoEM.EM.DbContext
 
             _entities.Clear();
 
-            var props = typeof(T).GetProperties();
+            var props = _entityType.GetProperties();
 
             while (reader.Read())
             {
                 var obj = new T();
+
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
                     string fieldName = reader.GetName(i);
                     var prop = props.FirstOrDefault(x => x.Name.ToLower() == fieldName.ToLower());
+
                     if (prop != null)
                     {
                         if (reader[i] != DBNull.Value)
                         {
-                            prop.SetValue(obj, reader[i], null);
+                            var value = reader[i];
+
+                            TypeConverter converter = TypeDescriptor.GetConverter(reader[i].GetType());
+                            if (converter.CanConvertTo(prop.PropertyType))
+                                value = converter.ConvertTo(reader[i], prop.PropertyType);
+
+                            prop.SetValue(obj, value, null);
                         }
                     }
                 }
+
                 _entities.Add(obj);
             }
         }
