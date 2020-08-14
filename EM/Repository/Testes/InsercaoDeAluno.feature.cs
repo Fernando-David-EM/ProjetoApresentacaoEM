@@ -85,7 +85,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Insercao com sucesso")]
         [NUnit.Framework.CategoryAttribute("insercao")]
-        [NUnit.Framework.TestCaseAttribute("2", "Fernando", "58681179055", "10/05/1990", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "Fernando", "586.811.790-55", "10/05/1990", "0", null)]
         public virtual void InsercaoComSucesso(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -138,7 +138,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Erro matricula existente")]
         [NUnit.Framework.CategoryAttribute("insercao")]
-        [NUnit.Framework.TestCaseAttribute("1", "Joao", "14936735051", "18/01/1997", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("1", "Joao", "149.367.350-51", "18/01/1997", "0", null)]
         public virtual void ErroMatriculaExistente(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -191,7 +191,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Erro cpf existente")]
         [NUnit.Framework.CategoryAttribute("insercao")]
-        [NUnit.Framework.TestCaseAttribute("3", "Jorge", "61399726048", "07/08/2000", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("3", "Jorge", "613.997.260-48", "07/08/2000", "0", null)]
         public virtual void ErroCpfExistente(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -244,7 +244,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Erro sexo maior que 1")]
         [NUnit.Framework.CategoryAttribute("insercao")]
-        [NUnit.Framework.TestCaseAttribute("4", "Romulo", "00274808013", "05/05/2005", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("4", "Romulo", "002.748.080-13", "05/05/2005", "2", null)]
         public virtual void ErroSexoMaiorQue1(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -289,6 +289,63 @@ this.FeatureBackground();
 #line hidden
 #line 39
  testRunner.Then("devo receber uma mensagem de erro ao inserir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Inserir mais de um aluno sem cpf sem dar erro")]
+        [NUnit.Framework.CategoryAttribute("insercao")]
+        public virtual void InserirMaisDeUmAlunoSemCpfSemDarErro()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "insercao"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Inserir mais de um aluno sem cpf sem dar erro", null, tagsOfScenario, argumentsOfScenario);
+#line 46
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "matricula",
+                            "nome",
+                            "cpf",
+                            "nascimento",
+                            "sexo"});
+                table1.AddRow(new string[] {
+                            "21",
+                            "Nulinho da Silva",
+                            "",
+                            "05/05/2005",
+                            "0"});
+                table1.AddRow(new string[] {
+                            "22",
+                            "Nulao Morais",
+                            "",
+                            "05/05/2005",
+                            "0"});
+#line 47
+ testRunner.Then("nao devo receber erros ao introduzir dois alunos com o cpf nulo", ((string)(null)), table1, "Entao ");
 #line hidden
             }
             this.ScenarioCleanup();

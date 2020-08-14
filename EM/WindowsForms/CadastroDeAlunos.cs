@@ -1,6 +1,7 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using ProjetoApresentacaoEM.EM.Domain;
 using ProjetoApresentacaoEM.EM.Repository;
+using ProjetoApresentacaoEM.EM.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,6 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 {
     public partial class CadastroDeAlunos : Form
     {
-        private bool _teclaNaoNumerica = false;
         private bool _teclaEhDeApagar = false;
         private EnumeradorEstadosTela _estadoTela = EnumeradorEstadosTela.Adicionar;
         private readonly RepositorioAluno _repositorio = new RepositorioAluno();
@@ -40,7 +40,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void InicializaDataGridView()
         {
-            AtribuiListaAoBindingSource(_repositorio.GetAll());
+            AtribuiListaAoBindingSource(_repositorio.GetAll().OrderBy(x => x.Matricula));
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.DataSource = _bindingSource;
@@ -48,14 +48,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void AtribuiListaAoBindingSource(IEnumerable<Aluno> alunos)
         {
-            var alunosBinding = new BindingList<Aluno>();
-
-            foreach (var aluno in alunos)
-            {
-                alunosBinding.Add(aluno);
-            }
-
-            _bindingSource.DataSource = alunosBinding;
+            _bindingSource.DataSource = alunos;
         }
 
         private void InicializaMascaras()
@@ -65,10 +58,10 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void InicializaEvents()
         {
-            textBoxMatricula.KeyDown += EhNumero_KeyDown;
+            textBoxMatricula.KeyDown += EstaApagando_KeyDown;
             textBoxMatricula.KeyPress += TextBoxMatricula_KeyPress;
 
-            textBoxCpf.KeyDown += EhNumero_KeyDown;
+            textBoxCpf.KeyDown += EstaApagando_KeyDown;
             textBoxCpf.KeyPress += TextBoxCpf_KeyPress;
 
             textBoxNome.KeyPress += TextBoxNome_KeyPress;
@@ -147,7 +140,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             var nome = textBoxNome.Text;
             var sexo = (EnumeradorSexo)comboBoxSexo.SelectedIndex;
             var nascimento = DateTime.Parse(maskedTextBoxNascimento.Text);
-            var cpf = textBoxCpf.Text;
+            var cpf = Formata.AdicionaPontuacaoCpf(textBoxCpf.Text);
 
             return new Aluno(matricula, nome, cpf, nascimento, sexo);
         }

@@ -1,8 +1,10 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using ProjetoApresentacaoEM.EM.Domain;
+using ProjetoApresentacaoEM.EM.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -18,38 +20,16 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             textBoxMatricula.Text = aluno.Matricula.ToString();
             textBoxNome.Text = aluno.Nome;
             comboBoxSexo.SelectedIndex = (int)aluno.Sexo;
-            textBoxCpf.Text = aluno.CPF;
+            textBoxCpf.Text = Formata.RemovePontuacaoCpf(aluno.CPF);
             maskedTextBoxNascimento.Text = aluno.Nascimento.ToString("dd/MM/yyyy");
         }
 
-        private void EhNumero_KeyDown(object sender, KeyEventArgs e)
+        private void EstaApagando_KeyDown(object sender, KeyEventArgs e)
         {
-            _teclaNaoNumerica = false;
             _teclaEhDeApagar = false;
 
-            VerificaSeEhNumero(e);
             VerificaSeEstaApagando(e);
         }
-
-        private void VerificaSeEhNumero(KeyEventArgs e)
-        {
-            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
-            {
-                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
-                {
-                    if (e.KeyCode != Keys.Back)
-                    {
-                        _teclaNaoNumerica = true;
-                    }
-                }
-            }
-
-            if (ModifierKeys == Keys.Shift)
-            {
-                _teclaNaoNumerica = true;
-            }
-        }
-
         private void VerificaSeEstaApagando(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Back)
@@ -60,7 +40,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void TextBoxMatricula_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (_teclaNaoNumerica == true)
+            if (!char.IsDigit(e.KeyChar) && !_teclaEhDeApagar)
             {
                 e.Handled = true;
             }
@@ -72,7 +52,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
         }
         private void TextBoxCpf_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (_teclaNaoNumerica == true)
+            if (!char.IsDigit(e.KeyChar) && !_teclaEhDeApagar)
             {
                 e.Handled = true;
             }
@@ -141,16 +121,19 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             _repositorio.Add(aluno);
 
             MessageBox.Show("Aluno adicionado com sucesso!");
+
             _bindingSource.Add(aluno);
+
+            InicializaDataGridView();
         }
 
         private void TrateFbException(FbException ex)
         {
-            if (ex.Message.Contains("ALU_MATRICULA"))
+            if (ex.Message.Contains("MATRICULA"))
                 MessageBox.Show("Matricula já cadastrada!");
             else
             {
-                if (ex.Message.Contains("ALU_CPF"))
+                if (ex.Message.Contains("CPF"))
                     MessageBox.Show("CPF já cadastrado!");
                 else
                 {
@@ -192,6 +175,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
             _bindingSource.RemoveCurrent();
             _bindingSource.Insert(pos, aluno);
+            _bindingSource.Position = pos;
         }
 
         private void buttonPesquisar_Click(object sender, EventArgs e)

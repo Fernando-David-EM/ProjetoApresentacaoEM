@@ -85,7 +85,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Alteracao com sucesso")]
         [NUnit.Framework.CategoryAttribute("alteracao")]
-        [NUnit.Framework.TestCaseAttribute("1", "PaulaAlterada", "61399726048", "05/10/1990", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("1", "PaulaAlterada", "613.997.260-48", "05/10/1990", "1", null)]
         public virtual void AlteracaoComSucesso(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -138,7 +138,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Erro novo cpf existente")]
         [NUnit.Framework.CategoryAttribute("alteracao")]
-        [NUnit.Framework.TestCaseAttribute("7", "JorgeAlterado", "25361727083", "07/08/2000", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("7", "JorgeAlterado", "253.617.270-83", "07/08/2000", "0", null)]
         public virtual void ErroNovoCpfExistente(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -182,7 +182,7 @@ this.FeatureBackground();
  testRunner.And(string.Format("introduzo um aluno que tinha um cpf {0} {1} {2} {3} {4}", cpf, matricula, nome, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
 #line 21
- testRunner.And("troco para um \"61399726048\" existente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And("troco para um \"613.997.260-48\" existente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
 #line 22
  testRunner.Then("devo receber uma mensagem de erro ao alterar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");

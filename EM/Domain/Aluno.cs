@@ -60,6 +60,11 @@ namespace ProjetoApresentacaoEM.EM.Domain
         }
         public EnumeradorSexo Sexo { get; set; }
 
+        public Aluno()
+        {
+
+        }
+
         public Aluno(int matricula, string nome, string cpf, DateTime nascimento, EnumeradorSexo sexo)
         {
             Matricula = matricula;
@@ -92,7 +97,10 @@ namespace ProjetoApresentacaoEM.EM.Domain
 
         public override string ToString()
         {
-            return $"({Matricula},\'{Nome}\',\'{CPF}\',\'{Nascimento:yyyy-MM-dd}\',{(int)Sexo})";
+            if (string.IsNullOrEmpty(CPF))
+                return $@"({Matricula},'{Nome}',NULL,'{Nascimento:yyyy-MM-dd}',{(int)Sexo})";
+
+            return $@"({Matricula},'{Nome}','{CPF}','{Nascimento:yyyy-MM-dd}',{(int)Sexo})";
         }
     }
 }
