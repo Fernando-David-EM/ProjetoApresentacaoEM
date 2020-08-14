@@ -114,24 +114,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "matricula",
-                            "nome",
-                            "cpf",
-                            "nascimento",
-                            "sexo"});
-                table1.AddRow(new string[] {
-                            "2",
-                            "Fernando",
-                            "58681179055",
-                            "10/05/1990",
-                            "0"});
-#line 11
- testRunner.And("introduzo as informações de um aluno", ((string)(null)), table1, "E ");
-#line hidden
-#line 14
- testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
-#line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                             "matricula",
                             "nome",
@@ -139,19 +121,37 @@ this.FeatureBackground();
                             "nascimento",
                             "sexo"});
                 table2.AddRow(new string[] {
-                            "1",
-                            "Paula",
-                            "61399726048",
-                            "05/10/1990",
-                            "1"});
-                table2.AddRow(new string[] {
                             "2",
                             "Fernando",
-                            "58681179055",
+                            "586.811.790-55",
+                            "10/05/1990",
+                            "0"});
+#line 11
+ testRunner.And("introduzo as informações de um aluno", ((string)(null)), table2, "E ");
+#line hidden
+#line 14
+ testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "matricula",
+                            "nome",
+                            "cpf",
+                            "nascimento",
+                            "sexo"});
+                table3.AddRow(new string[] {
+                            "1",
+                            "Paula",
+                            "613.997.260-48",
+                            "05/10/1990",
+                            "1"});
+                table3.AddRow(new string[] {
+                            "2",
+                            "Fernando",
+                            "586.811.790-55",
                             "10/05/1990",
                             "0"});
 #line 15
- testRunner.But("devo ver esses dois ao pesquisar todos", ((string)(null)), table2, "Mas ");
+ testRunner.But("devo ver esses dois ao pesquisar todos", ((string)(null)), table3, "Mas ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -160,7 +160,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Pesquisa por matricula com sucesso")]
         [NUnit.Framework.CategoryAttribute("pesquisa")]
-        [NUnit.Framework.TestCaseAttribute("2", "Joao", "14936735051", "18/01/1997", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "Joao", "149.367.350-51", "18/01/1997", "0", null)]
         public virtual void PesquisaPorMatriculaComSucesso(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -216,7 +216,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Pesquisa por matricula errada")]
         [NUnit.Framework.CategoryAttribute("pesquisa")]
-        [NUnit.Framework.TestCaseAttribute("3", "Jorge", "61399726048", "07/08/2000", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("3", "Jorge", "613.997.260-48", "07/08/2000", "0", null)]
         public virtual void PesquisaPorMatriculaErrada(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -269,7 +269,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Pesquisa por matricula com sucesso com LINQ")]
         [NUnit.Framework.CategoryAttribute("pesquisa")]
-        [NUnit.Framework.TestCaseAttribute("2", "Joao", "14936735051", "18/01/1997", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "Joao", "149.367.350-51", "18/01/1997", "0", null)]
         public virtual void PesquisaPorMatriculaComSucessoComLINQ(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -325,7 +325,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Pesquisa por nome do aluno com sucesso")]
         [NUnit.Framework.CategoryAttribute("pesquisa")]
-        [NUnit.Framework.TestCaseAttribute("2", "Fernando", "58681179055", "10/05/1990", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "Fernando", "586.811.790-55", "10/05/1990", "0", null)]
         public virtual void PesquisaPorNomeDoAlunoComSucesso(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -410,38 +410,38 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "matricula",
                             "nome",
                             "cpf",
                             "nascimento",
                             "sexo"});
-                table3.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "2",
                             "Fernanda",
-                            "58681179055",
+                            "586.811.790-55",
                             "10/05/1990",
                             "1"});
-                table3.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "3",
                             "Joana",
-                            "67266967015",
+                            "672.669.670-15",
                             "07/08/2000",
                             "1"});
-                table3.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "4",
                             "Joao",
-                            "14936735051",
+                            "149.367.350-51",
                             "18/01/1997",
                             "0"});
-                table3.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "5",
                             "Ronaldo",
-                            "00274808013",
+                            "002.748.080-13",
                             "05/05/2005",
                             "0"});
 #line 61
- testRunner.And("introduzo varios alunos", ((string)(null)), table3, "E ");
+ testRunner.And("introduzo varios alunos", ((string)(null)), table4, "E ");
 #line hidden
 #line 67
  testRunner.Then("devo receber todos os alunos ao pesquisar pela letra \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");

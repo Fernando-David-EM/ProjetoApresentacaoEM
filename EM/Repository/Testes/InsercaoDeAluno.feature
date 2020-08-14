@@ -41,3 +41,10 @@ Cenario: Erro sexo maior que 1
 	Exemplos:
 		| matricula | nome   | cpf            | nascimento | sexo |
 		| 4         | Romulo | 002.748.080-13 | 05/05/2005 | 2    |
+
+@insercao
+Cenario: Inserir mais de um aluno sem cpf sem dar erro
+	Entao nao devo receber erros ao introduzir dois alunos com o cpf nulo
+		| matricula | nome             | cpf | nascimento | sexo |
+		| 21        | Nulinho da Silva |     | 05/05/2005 | 0    |
+		| 22        | Nulao Morais     |     | 05/05/2005 | 0    |

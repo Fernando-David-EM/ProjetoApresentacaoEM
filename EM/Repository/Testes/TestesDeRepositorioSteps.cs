@@ -206,5 +206,17 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         {
             Assert.AreEqual(_repositorio.GetAll(), _repositorio.GetByConteudoNoNome(letra));
         }
+
+        [Then(@"nao devo receber erros ao introduzir dois alunos com o cpf nulo")]
+        public void EntaoNaoDevoReceberErrosAoIntroduzirDoisAlunosComOCpfNulo(Table table)
+        {
+            var rows = table.Rows;
+
+            foreach (var row in rows)
+            {
+                _repositorio.Add(CriaAluno(row));
+            }
+        }
+
     }
 }

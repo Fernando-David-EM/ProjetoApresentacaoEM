@@ -11,11 +11,17 @@ namespace ProjetoApresentacaoEM.EM.Util
     {
         public static string RemovePontuacaoCpf(string cpf)
         {
+            if (string.IsNullOrEmpty(cpf))
+                return null;
+
             return Regex.Replace(cpf, "[^0-9]", string.Empty);
         }
 
         public static string AdicionaPontuacaoCpf(string cpf)
         {
+            if (string.IsNullOrEmpty(cpf))
+                return null;
+            
             var chars = cpf.ToCharArray();
             char[] cpfChars = new char[14];
 
