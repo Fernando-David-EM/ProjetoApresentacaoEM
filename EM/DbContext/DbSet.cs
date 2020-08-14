@@ -16,78 +16,89 @@ namespace ProjetoApresentacaoEM.EM.DbContext
 {
     class DbSet<T> : IDbSet<T> where T : IEntidade, new()
     {
-        protected List<T> _entities;
-        protected Type _entityType;
-        protected List<string> _entityPropertyNames;
-        protected string _entityColumns;
-        protected string _entityName;
+        protected List<T> _entidades;
+        protected Type _tipoDaEntidade;
+        protected List<string> _nomesDePropriedadesDaEntidade;
+        protected string _nomeDeColunasDaEntidade;
+        protected string _nomeDaEntidade;
 
         public DbSet()
         {
-            _entities = new List<T>();
-            var type = new T();
-            _entityType = type.GetType();
-            _entityName = _entityType.Name;
-            _entityPropertyNames = _entityType.GetProperties().Select(p => p.Name).ToList();
-            _entityColumns = string.Join(",", _entityPropertyNames);
+            _entidades = new List<T>();
+            _tipoDaEntidade = typeof(T);
+            _nomeDaEntidade = _tipoDaEntidade.Name;
+            _nomesDePropriedadesDaEntidade = _tipoDaEntidade.GetProperties().Select(p => p.Name).ToList();
+            _nomeDeColunasDaEntidade = string.Join(",", _nomesDePropriedadesDaEntidade);
 
-            FillList();
+            PreencheListaDeEntidades();
         }
 
-        private void FillList()
+        private void PreencheListaDeEntidades()
         {
             using var connection = DataBase.AbreConexao();
-            using var command = new FbCommand($"SELECT * FROM {_entityName}", connection);
+            using var command = new FbCommand($"SELECT * FROM {_nomeDaEntidade}", connection);
 
             using var reader = command.ExecuteReader();
 
-            _entities.Clear();
-
-            var props = _entityType.GetProperties();
+            _entidades.Clear();
 
             while (reader.Read())
             {
-                var obj = new T();
+                var obj = CriaObjetoEntidade(reader);
 
-                for (int i = 0; i < reader.FieldCount; i++)
+                _entidades.Add(obj);
+            }
+        }
+
+        private T CriaObjetoEntidade(FbDataReader reader)
+        {
+            var obj = new T();
+
+            var propriedades = _tipoDaEntidade.GetProperties();
+
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                string fieldName = reader.GetName(i);
+                var propriedade = propriedades.FirstOrDefault(x => x.Name.ToLower() == fieldName.ToLower());
+
+                if (propriedade != null)
                 {
-                    string fieldName = reader.GetName(i);
-                    var prop = props.FirstOrDefault(x => x.Name.ToLower() == fieldName.ToLower());
-
-                    if (prop != null)
+                    if (reader[i] != DBNull.Value)
                     {
-                        if (reader[i] != DBNull.Value)
-                        {
-                            var value = reader[i];
+                        var value = ConverteSeNecessario(reader[i], propriedade.PropertyType);
 
-                            TypeConverter converter = TypeDescriptor.GetConverter(reader[i].GetType());
-                            if (converter.CanConvertTo(prop.PropertyType))
-                                value = converter.ConvertTo(reader[i], prop.PropertyType);
-
-                            prop.SetValue(obj, value, null);
-                        }
+                        propriedade.SetValue(obj, value, null);
                     }
                 }
-
-                _entities.Add(obj);
             }
+
+            return obj;
+        }
+
+        private object ConverteSeNecessario(object objeto, Type tipoDaPropriedade)
+        {
+            TypeConverter converter = TypeDescriptor.GetConverter(objeto.GetType());
+            if (converter.CanConvertTo(tipoDaPropriedade))
+                return converter.ConvertTo(objeto, tipoDaPropriedade);
+            else
+                return objeto;
         }
 
         public void Add(T objeto)
         {
             using var connection = DataBase.AbreConexao();
-            using var command = new FbCommand($"INSERT INTO {_entityName} ({_entityColumns}) VALUES {objeto}", connection);
+            using var command = new FbCommand($"INSERT INTO {_nomeDaEntidade} ({_nomeDeColunasDaEntidade}) VALUES {objeto}", connection);
 
             command.ExecuteNonQuery();
         }
 
         public void Delete(T objeto)
         {
-            PropertyInfo property = _entityType.GetProperty(_entityPropertyNames[0]);
-            var primaryKey = property.GetValue(objeto, null);
+            PropertyInfo property = _tipoDaEntidade.GetProperty(_nomesDePropriedadesDaEntidade[0]);
+            var chavePrimaria = property.GetValue(objeto, null);
 
             using var connection = DataBase.AbreConexao();
-            using var command = new FbCommand($"DELETE FROM {_entityName} WHERE {_entityPropertyNames[0]} = {primaryKey}", connection);
+            using var command = new FbCommand($"DELETE FROM {_nomeDaEntidade} WHERE {_nomesDePropriedadesDaEntidade[0]} = {chavePrimaria}", connection);
 
             var reader = command.ExecuteNonQuery();
 
@@ -99,47 +110,47 @@ namespace ProjetoApresentacaoEM.EM.DbContext
 
         public IEnumerable<T> GetAll()
         {
-            FillList();
+            PreencheListaDeEntidades();
 
-            return _entities;
+            return _entidades;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            return _entities.GetEnumerator();
+            return _entidades.GetEnumerator();
         }
 
         public void Update(T objeto)
         {
-            PropertyInfo property = _entityType.GetProperty(_entityPropertyNames[0]);
-            var primaryKey = property.GetValue(objeto, null);
+            PropertyInfo property = _tipoDaEntidade.GetProperty(_nomesDePropriedadesDaEntidade[0]);
+            var chavePrimaria = property.GetValue(objeto, null);
 
             using var connection = DataBase.AbreConexao();
-            using var command = new FbCommand($"UPDATE {_entityName} SET {CreateUpdateSetStatement(objeto)} WHERE {_entityPropertyNames[0]} = {primaryKey}", connection);
+            using var command = new FbCommand($"UPDATE {_nomeDaEntidade} SET {CriaStringColunaIgualValor(objeto)} WHERE {_nomesDePropriedadesDaEntidade[0]} = {chavePrimaria}", connection);
 
             command.ExecuteNonQuery();
         }
 
-        private string CreateUpdateSetStatement(T objeto)
+        private string CriaStringColunaIgualValor(T objeto)
         {
-            var columns = _entityColumns
+            var colunas = _nomeDeColunasDaEntidade
                 .Split(',');
 
-            var values = objeto
+            var valores = objeto
                 .ToString()
                 .Trim('(', ')')
                 .Split(',');
 
-            var updateSet = "";
+            var colunaIgualValor = "";
 
-            for (int i = 0; i < columns.Length; i++)
+            for (int i = 0; i < colunas.Length; i++)
             {
-                updateSet += $"{columns[i]}={values[i]},";
+                colunaIgualValor += $"{colunas[i]}={valores[i]},";
             }
 
-            updateSet = updateSet.Remove(updateSet.Length - 1);
+            colunaIgualValor = colunaIgualValor.Remove(colunaIgualValor.Length - 1);
 
-            return updateSet;
+            return colunaIgualValor;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
