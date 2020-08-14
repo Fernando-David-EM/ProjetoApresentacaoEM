@@ -23,34 +23,12 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             maskedTextBoxNascimento.Text = aluno.Nascimento.ToString("dd/MM/yyyy");
         }
 
-        private void EhNumero_KeyDown(object sender, KeyEventArgs e)
+        private void EstaApagando_KeyDown(object sender, KeyEventArgs e)
         {
-            _teclaNaoNumerica = false;
             _teclaEhDeApagar = false;
 
-            VerificaSeEhNumero(e);
             VerificaSeEstaApagando(e);
         }
-
-        private void VerificaSeEhNumero(KeyEventArgs e)
-        {
-            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
-            {
-                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
-                {
-                    if (e.KeyCode != Keys.Back)
-                    {
-                        _teclaNaoNumerica = true;
-                    }
-                }
-            }
-
-            if (ModifierKeys == Keys.Shift)
-            {
-                _teclaNaoNumerica = true;
-            }
-        }
-
         private void VerificaSeEstaApagando(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Back)
@@ -61,7 +39,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void TextBoxMatricula_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (_teclaNaoNumerica == true)
+            if (!char.IsDigit(e.KeyChar) && !_teclaEhDeApagar)
             {
                 e.Handled = true;
             }
@@ -73,7 +51,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
         }
         private void TextBoxCpf_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (_teclaNaoNumerica == true)
+            if (!char.IsDigit(e.KeyChar) && !_teclaEhDeApagar)
             {
                 e.Handled = true;
             }

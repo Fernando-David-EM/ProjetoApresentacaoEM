@@ -17,7 +17,6 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 {
     public partial class CadastroDeAlunos : Form
     {
-        private bool _teclaNaoNumerica = false;
         private bool _teclaEhDeApagar = false;
         private EnumeradorEstadosTela _estadoTela = EnumeradorEstadosTela.Adicionar;
         private readonly RepositorioAluno _repositorio = new RepositorioAluno();
@@ -66,10 +65,10 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void InicializaEvents()
         {
-            textBoxMatricula.KeyDown += EhNumero_KeyDown;
+            textBoxMatricula.KeyDown += EstaApagando_KeyDown;
             textBoxMatricula.KeyPress += TextBoxMatricula_KeyPress;
 
-            textBoxCpf.KeyDown += EhNumero_KeyDown;
+            textBoxCpf.KeyDown += EstaApagando_KeyDown;
             textBoxCpf.KeyPress += TextBoxCpf_KeyPress;
 
             textBoxNome.KeyPress += TextBoxNome_KeyPress;
