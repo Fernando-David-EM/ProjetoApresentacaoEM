@@ -12,8 +12,8 @@ Cenario: Insercao com sucesso
 	Entao o aluno deve ser inserido com sucesso
 
 	Exemplos:
-		| matricula | nome     | cpf            | nascimento | sexo |
-		| 2         | Fernando | 586.811.790-55 | 10/05/1990 | 0    |
+		| matricula | nome     | cpf         | nascimento | sexo |
+		| 2         | Fernando | 58681179055 | 10/05/1990 | 0    |
 
 @insercao
 Cenario: Erro matricula existente
@@ -21,8 +21,8 @@ Cenario: Erro matricula existente
 	Entao devo receber uma mensagem de erro ao inserir
 
 	Exemplos:
-		| matricula | nome | cpf            | nascimento | sexo |
-		| 1         | Joao | 149.367.350-51 | 18/01/1997 | 0    |
+		| matricula | nome | cpf         | nascimento | sexo |
+		| 1         | Joao | 14936735051 | 18/01/1997 | 0    |
 
 @insercao
 Cenario: Erro cpf existente
@@ -30,8 +30,8 @@ Cenario: Erro cpf existente
 	Entao devo receber uma mensagem de erro ao inserir
 
 	Exemplos:
-		| matricula | nome  | cpf            | nascimento | sexo |
-		| 3         | Jorge | 613.997.260-48 | 07/08/2000 | 0    |
+		| matricula | nome  | cpf         | nascimento | sexo |
+		| 3         | Jorge | 61399726048 | 07/08/2000 | 0    |
 
 @insercao
 Cenario: Erro sexo maior que 1
@@ -39,12 +39,5 @@ Cenario: Erro sexo maior que 1
 	Entao devo receber uma mensagem de erro ao inserir
 
 	Exemplos:
-		| matricula | nome   | cpf            | nascimento | sexo |
-		| 4         | Romulo | 002.748.080-13 | 05/05/2005 | 2    |
-
-@insercao
-Cenario: Inserir mais de um aluno sem cpf sem dar erro
-	Entao nao devo receber erros ao introduzir dois alunos com o cpf nulo
-		| matricula | nome             | cpf | nascimento | sexo |
-		| 21        | Nulinho da Silva |     | 05/05/2005 | 0    |
-		| 22        | Nulao Morais     |     | 05/05/2005 | 0    |
+		| matricula | nome   | cpf         | nascimento | sexo |
+		| 4         | Romulo | 00274808013 | 05/05/2005 | 2    |
