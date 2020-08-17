@@ -3,6 +3,7 @@ using ProjetoApresentacaoEM.EM.Domain;
 using ProjetoApresentacaoEM.EM.Util;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -122,9 +123,14 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
             MessageBox.Show("Aluno adicionado com sucesso!");
 
-            _bindingSource.Add(aluno);
-
-            InicializaDataGridView();
+            if ((_bindingSource.DataSource as BindingList<Aluno>) == null)
+            {
+                InicializaDataGridView();
+            }
+            else
+            {
+                _bindingSource.Add(aluno);
+            }
         }
 
         private void TrateFbException(FbException ex)
@@ -171,11 +177,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
             MessageBox.Show("Aluno alterado com sucesso!");
 
-            var pos = _bindingSource.Position;
-
-            _bindingSource.RemoveCurrent();
-            _bindingSource.Insert(pos, aluno);
-            _bindingSource.Position = pos;
+            InicializaDataGridView();
         }
 
         private void buttonPesquisar_Click(object sender, EventArgs e)

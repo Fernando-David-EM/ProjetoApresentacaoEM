@@ -46,7 +46,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         [Given(@"que estou conectado no banco de dados")]
         public void DadoQueEstouConectadoNoBancoDeDados()
         {
-            TesteCriaDBHelper.AbreBancoParaTestes(); // da delete nos campos e seta para satisfazer as condiçoes dos testes
+            TesteCriaDBHelper.AbreBancoParaTestes();
 
             Assert.IsNotNull(DataBase.AbreConexao());
         }
