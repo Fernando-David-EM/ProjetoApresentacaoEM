@@ -57,31 +57,46 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
             _aluno = CriaAluno(matricula, nome, cpf, nascimento, sexo);
         }
 
+        [Given(@"introduzo as informações de um aluno (.*) (.*) (.*) (.*)")]
+        public void DadoIntroduzoAsInformacoesDeUmAluno(int matricula, string nome, string nascimento, int sexo)
+        {
+            _aluno = CriaAluno(matricula, nome, null, nascimento, sexo);
+        }
+
         [Then(@"o aluno deve ser inserido com sucesso")]
         public void EntaoOAlunoDeveTerSidoInseridoComSucesso()
         {
-            _repositorio.Add(_aluno);
+            Assert.DoesNotThrow(() => _repositorio.Add(_aluno));
+        }
 
+        [Then(@"o aluno deve estar no banco")]
+        public void EntaoOAlunoDeveEstarNoBanco()
+        {
             Assert.AreEqual(_aluno, _repositorio.GetByMatricula(_aluno.Matricula));
         }
 
-        [Given(@"introduzo um aluno com uma (.*) existente (.*) (.*) (.*) (.*)")]
-        public void DadoIntroduzoOMesmoAluno(int matricula, string nome, string cpf, string nascimento, int sexo)
+        [Given(@"quero inserir um aluno com uma matricula (.*) existente")]
+        public void DadoIntroduzoOMesmoAluno(int matricula)
         {
-            _aluno = CriaAluno(matricula, nome, cpf, nascimento, sexo);
+            Assert.IsNotNull(_repositorio.GetByMatricula(matricula));
         }
 
-        [Given(@"introduzo um aluno com um (.*) existente (.*) (.*) (.*) (.*)")]
-        public void DadoIntroduzoUmAlunoComUmExistente(string cpf, int matricula, string nome, string nascimento, int sexo)
-        {
-            _aluno = CriaAluno(matricula, nome, cpf, nascimento, sexo);
-        }
-
-
-        [Then(@"devo receber uma mensagem de erro ao inserir")]
-        public void EntaoDevoReceberMensagensDeErroTodasAsVezes()
+        [Then(@"devo receber uma mensagem de erro")]
+        public void EntaoDevoReceberUmaMensagemDeErro()
         {
             Assert.Throws<FbException>(() => _repositorio.Add(_aluno));
+        }
+
+        [Then(@"o aluno nao deve ser introduzido")]
+        public void EntaoOAlunoNaoDeveSerIntroduzido()
+        {
+            Assert.AreNotEqual(_repositorio.GetByMatricula(_aluno.Matricula), _aluno);
+        }
+
+        [Given(@"quero inserir um aluno com um cpf ""(.*)"" existente")]
+        public void DadoIntroduzoUmAlunoComUmExistente(string cpf) 
+        {
+            Assert.IsNotNull(_repositorio.Get(x => x.CPF == cpf));
         }
 
         [Then(@"o aluno deve ser alterado com sucesso")]
@@ -92,10 +107,11 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
             Assert.AreEqual(_aluno, _repositorio.GetByMatricula(_aluno.Matricula));
         }
 
-        [Given(@"introduzo um aluno com o (.*) diferente de um (.*) (.*) (.*) (.*)")]
-        public void DadoIntroduzoUmAlunoComOMaiorQue(int sexo, int matricula, string nome, string cpf, string nascimento)
+
+        [Given(@"quero inserir um aluno com um sexo (.*)")]
+        public void DadoIntroduzoUmAlunoComOMaiorQue(int sexo)
         {
-            _aluno = CriaAluno(matricula, nome, cpf, nascimento, sexo);
+            Assert.IsFalse((int)EnumeradorSexo.Masculino == sexo || (int)EnumeradorSexo.Feminino == sexo);
         }
 
         [Given(@"introduzo um aluno que tinha um cpf (.*) (.*) (.*) (.*) (.*)")]
@@ -116,6 +132,12 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         public void EntaoDevoReceberUmaMensagemDeErroAoAlterar()
         {
             Assert.Throws<FbException>(() => _repositorio.Update(_aluno));
+        }
+
+        [Then(@"o aluno nao deve ser alterado")]
+        public void EntaoOAlunoNaoDeveSerAlterado()
+        {
+            Assert.AreNotEqual(_aluno, _repositorio.GetByMatricula(_aluno.Matricula));
         }
 
         [Then(@"o aluno deve ser deletado com sucesso")]

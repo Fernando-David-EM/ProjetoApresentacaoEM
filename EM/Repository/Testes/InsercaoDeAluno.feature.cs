@@ -131,6 +131,9 @@ this.FeatureBackground();
 #line 12
  testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
+#line 13
+ testRunner.And("o aluno deve estar no banco", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
@@ -155,7 +158,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro matricula existente", null, tagsOfScenario, argumentsOfScenario);
-#line 19
+#line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -178,11 +181,17 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 20
- testRunner.And(string.Format("introduzo um aluno com uma {0} existente {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
 #line 21
- testRunner.Then("devo receber uma mensagem de erro ao inserir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+ testRunner.And("quero inserir um aluno com uma matricula 1 existente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
+#line 22
+ testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
+#line 23
+ testRunner.Then("devo receber uma mensagem de erro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line hidden
+#line 24
+ testRunner.And("o aluno nao deve ser introduzido", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -208,7 +217,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro cpf existente", null, tagsOfScenario, argumentsOfScenario);
-#line 28
+#line 31
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -231,11 +240,17 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 29
- testRunner.And(string.Format("introduzo um aluno com um {0} existente {1} {2} {3} {4}", cpf, matricula, nome, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line 32
+ testRunner.And("quero inserir um aluno com um cpf \"613.997.260-48\" existente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 30
- testRunner.Then("devo receber uma mensagem de erro ao inserir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line 33
+ testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
+#line 34
+ testRunner.Then("devo receber uma mensagem de erro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line hidden
+#line 35
+ testRunner.And("o aluno nao deve ser introduzido", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -261,7 +276,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro sexo maior que 1", null, tagsOfScenario, argumentsOfScenario);
-#line 37
+#line 42
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -284,11 +299,17 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 38
- testRunner.And(string.Format("introduzo um aluno com o {0} diferente de um {1} {2} {3} {4}", sexo, matricula, nome, cpf, nascimento), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line 43
+ testRunner.And("quero inserir um aluno com um sexo 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 39
- testRunner.Then("devo receber uma mensagem de erro ao inserir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line 44
+ testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3} {4}", matricula, nome, cpf, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
+#line 45
+ testRunner.Then("devo receber uma mensagem de erro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line hidden
+#line 46
+ testRunner.And("o aluno nao deve ser introduzido", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -297,13 +318,24 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Inserir mais de um aluno sem cpf sem dar erro")]
         [NUnit.Framework.CategoryAttribute("insercao")]
-        public virtual void InserirMaisDeUmAlunoSemCpfSemDarErro()
+        [NUnit.Framework.TestCaseAttribute("21", "Nulinho", "05/05/2005", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("22", "Nulao", "05/05/2005", "0", null)]
+        public virtual void InserirMaisDeUmAlunoSemCpfSemDarErro(string matricula, string nome, string nascimento, string sexo, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "insercao"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("matricula", matricula);
+            argumentsOfScenario.Add("nome", nome);
+            argumentsOfScenario.Add("nascimento", nascimento);
+            argumentsOfScenario.Add("sexo", sexo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Inserir mais de um aluno sem cpf sem dar erro", null, tagsOfScenario, argumentsOfScenario);
-#line 46
+#line 53
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -326,26 +358,14 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "matricula",
-                            "nome",
-                            "cpf",
-                            "nascimento",
-                            "sexo"});
-                table1.AddRow(new string[] {
-                            "21",
-                            "Nulinho da Silva",
-                            "",
-                            "05/05/2005",
-                            "0"});
-                table1.AddRow(new string[] {
-                            "22",
-                            "Nulao Morais",
-                            "",
-                            "05/05/2005",
-                            "0"});
-#line 47
- testRunner.Then("nao devo receber erros ao introduzir dois alunos com o cpf nulo", ((string)(null)), table1, "Entao ");
+#line 54
+ testRunner.And(string.Format("introduzo as informações de um aluno {0} {1} {2} {3}", matricula, nome, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
+#line 55
+ testRunner.Then("o aluno deve ser inserido com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line hidden
+#line 56
+ testRunner.And("o aluno deve estar no banco", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
             }
             this.ScenarioCleanup();

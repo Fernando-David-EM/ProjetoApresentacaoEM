@@ -131,6 +131,9 @@ this.FeatureBackground();
 #line 12
  testRunner.Then("o aluno deve ser alterado com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
 #line hidden
+#line 13
+ testRunner.And("o aluno deve estar no banco", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
@@ -155,7 +158,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("nascimento", nascimento);
             argumentsOfScenario.Add("sexo", sexo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Erro novo cpf existente", null, tagsOfScenario, argumentsOfScenario);
-#line 19
+#line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -178,14 +181,17 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 20
+#line 21
  testRunner.And(string.Format("introduzo um aluno que tinha um cpf {0} {1} {2} {3} {4}", cpf, matricula, nome, nascimento, sexo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 21
+#line 22
  testRunner.And("troco para um \"613.997.260-48\" existente", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 22
- testRunner.Then("devo receber uma mensagem de erro ao alterar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line 23
+ testRunner.Then("devo receber uma mensagem de erro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Entao ");
+#line hidden
+#line 24
+ testRunner.And("o aluno nao deve ser alterado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
             }
             this.ScenarioCleanup();

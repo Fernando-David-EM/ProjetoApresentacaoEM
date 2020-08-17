@@ -12,7 +12,7 @@ Cenario: Pesquisa total com sucesso
 		| matricula | nome     | cpf            | nascimento | sexo |
 		| 2         | Fernando | 586.811.790-55 | 10/05/1990 | 0    |
 	Entao o aluno deve ser inserido com sucesso
-	Mas devo ver esses dois ao pesquisar todos
+	E devo ver esses dois ao pesquisar todos
 		| matricula | nome     | cpf            | nascimento | sexo |
 		| 1         | Paula    | 613.997.260-48 | 05/10/1990 | 1    |
 		| 2         | Fernando | 586.811.790-55 | 10/05/1990 | 0    |
@@ -21,7 +21,7 @@ Cenario: Pesquisa total com sucesso
 Cenario: Pesquisa por matricula com sucesso
 	E introduzo as informações de um aluno <matricula> <nome> <cpf> <nascimento> <sexo>
 	Entao o aluno deve ser inserido com sucesso
-	Mas devo receber o mesmo aluno ao pesquisar pela matricula 2
+	E devo receber o mesmo aluno ao pesquisar pela matricula 2
 
 	Exemplos:
 		| matricula | nome | cpf            | nascimento | sexo |
@@ -40,7 +40,7 @@ Cenario: Pesquisa por matricula errada
 Cenario: Pesquisa por matricula com sucesso com LINQ
 	E introduzo as informações de um aluno <matricula> <nome> <cpf> <nascimento> <sexo>
 	Entao o aluno deve ser inserido com sucesso
-	Mas devo receber atraves do LINQ o mesmo aluno ao pesquisar pela matricula 2
+	E devo receber atraves do LINQ o mesmo aluno ao pesquisar pela matricula 2
 
 	Exemplos:
 		| matricula | nome | cpf            | nascimento | sexo |
@@ -50,7 +50,7 @@ Cenario: Pesquisa por matricula com sucesso com LINQ
 Cenario: Pesquisa por nome do aluno com sucesso
 	E introduzo as informações de um aluno <matricula> <nome> <cpf> <nascimento> <sexo>
 	Entao o aluno deve ser inserido com sucesso
-	Mas devo receber o mesmo aluno ao pesquisar pelo nome "Fernando"
+	E devo receber o mesmo aluno ao pesquisar pelo nome "Fernando"
 
 	Exemplos:
 		| matricula | nome     | cpf            | nascimento | sexo |

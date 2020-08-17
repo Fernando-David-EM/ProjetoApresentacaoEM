@@ -10,6 +10,7 @@ Contexto: Já conectado
 Cenario: Alteracao com sucesso
 	E introduzo as informações de um aluno <matricula> <nome> <cpf> <nascimento> <sexo>
 	Entao o aluno deve ser alterado com sucesso
+	E o aluno deve estar no banco
 
 	Exemplos:
 		| matricula | nome          | cpf            | nascimento | sexo |
@@ -19,7 +20,8 @@ Cenario: Alteracao com sucesso
 Cenario: Erro novo cpf existente
 	E introduzo um aluno que tinha um cpf <cpf> <matricula> <nome> <nascimento> <sexo>
 	E troco para um "613.997.260-48" existente
-	Entao devo receber uma mensagem de erro ao alterar
+	Entao devo receber uma mensagem de erro
+	E o aluno nao deve ser alterado
 
 	Exemplos:
 		| matricula | nome          | cpf            | nascimento | sexo |

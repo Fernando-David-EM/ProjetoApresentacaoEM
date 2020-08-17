@@ -10,7 +10,7 @@ Contexto: Já conectado
 Cenario: Remocao com sucesso
 	E introduzo as informações de um aluno <matricula> <nome> <cpf> <nascimento> <sexo>
 	Entao o aluno deve ser inserido com sucesso
-	Mas o aluno deve ser deletado com sucesso
+	E o aluno deve ser deletado com sucesso
 
 	Exemplos:
 		| matricula | nome          | cpf            | nascimento | sexo |
