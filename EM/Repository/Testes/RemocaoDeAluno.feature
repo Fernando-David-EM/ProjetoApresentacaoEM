@@ -13,8 +13,8 @@ Cenario: Remocao com sucesso
 	Mas o aluno deve ser deletado com sucesso
 
 	Exemplos:
-		| matricula | nome          | cpf            | nascimento | sexo |
-		| 8         | DeletadoSerei | 611.814.500-80 | 22/08/1985 | 1    |
+		| matricula | nome          | cpf         | nascimento | sexo |
+		| 8         | DeletadoSerei | 61181450080 | 22/08/1985 | 1    |
 
 @remocao
 Cenario: Erro matricula inexistente
@@ -22,5 +22,5 @@ Cenario: Erro matricula inexistente
 	Entao devo receber uma mensagem de erro ao remover
 
 	Exemplos:
-		| matricula | nome | cpf            | nascimento | sexo |
-		| 9         | Joao | 149.367.350-51 | 18/01/1997 | 0    |
+		| matricula | nome | cpf         | nascimento | sexo |
+		| 9         | Joao | 14936735051 | 18/01/1997 | 0    |

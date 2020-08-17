@@ -132,18 +132,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EM\DbContext\Context.cs" />
-    <Compile Include="EM\DbContext\DbSet.cs" />
-    <Compile Include="EM\DbContext\IDbSet.cs" />
     <Compile Include="EM\Domain\Aluno.cs" />
     <Compile Include="EM\Domain\EnumeradorSexo.cs" />
     <Compile Include="EM\Domain\Testes\TestesDeInstanciaSteps.cs" />
-    <Compile Include="EM\Util\Formata.cs" />
     <Compile Include="EM\Util\ValidaCpf.cs" />
     <Compile Include="EM\Util\DataBase.cs" />
     <Compile Include="EM\Domain\IEntidade.cs" />
     <Compile Include="EM\Repository\RepositorioAbstrato.cs" />
     <Compile Include="EM\Repository\RepositorioAluno.cs" />
+    <Compile Include="EM\Util\RepositorioHelper.cs" />
     <Compile Include="EM\Util\TesteCriaDBHelper.cs" />
     <Compile Include="EM\Repository\Testes\TestesDeRepositorioSteps.cs" />
     <Compile Include="EM\WindowsForms\CadastroDeAlunos.cs">

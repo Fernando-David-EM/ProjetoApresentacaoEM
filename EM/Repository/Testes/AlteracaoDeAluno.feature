@@ -12,15 +12,15 @@ Cenario: Alteracao com sucesso
 	Entao o aluno deve ser alterado com sucesso
 
 	Exemplos:
-		| matricula | nome          | cpf            | nascimento | sexo |
-		| 1         | PaulaAlterada | 613.997.260-48 | 05/10/1990 | 1    |
+		| matricula | nome          | cpf         | nascimento | sexo |
+		| 1         | PaulaAlterada | 61399726048 | 05/10/1990 | 1    |
 
 @alteracao
 Cenario: Erro novo cpf existente
 	E introduzo um aluno que tinha um cpf <cpf> <matricula> <nome> <nascimento> <sexo>
-	E troco para um "613.997.260-48" existente
+	E troco para um "61399726048" existente
 	Entao devo receber uma mensagem de erro ao alterar
 
 	Exemplos:
-		| matricula | nome          | cpf            | nascimento | sexo |
-		| 7         | JorgeAlterado | 253.617.270-83 | 07/08/2000 | 0    |
+		| matricula | nome          | cpf         | nascimento | sexo |
+		| 7         | JorgeAlterado | 25361727083 | 07/08/2000 | 0    |

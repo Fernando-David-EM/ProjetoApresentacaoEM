@@ -76,7 +76,7 @@
             this.textBoxMatricula.Location = new System.Drawing.Point(8, 40);
             this.textBoxMatricula.Name = "textBoxMatricula";
             this.textBoxMatricula.Size = new System.Drawing.Size(99, 20);
-            this.textBoxMatricula.TabIndex = 1;
+            this.textBoxMatricula.TabIndex = 13;
             this.textBoxMatricula.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // comboBoxSexo
@@ -88,35 +88,35 @@
             this.comboBoxSexo.Location = new System.Drawing.Point(8, 88);
             this.comboBoxSexo.Name = "comboBoxSexo";
             this.comboBoxSexo.Size = new System.Drawing.Size(99, 21);
-            this.comboBoxSexo.TabIndex = 3;
+            this.comboBoxSexo.TabIndex = 12;
             // 
             // maskedTextBoxNascimento
             // 
             this.maskedTextBoxNascimento.Location = new System.Drawing.Point(117, 89);
             this.maskedTextBoxNascimento.Name = "maskedTextBoxNascimento";
             this.maskedTextBoxNascimento.Size = new System.Drawing.Size(116, 20);
-            this.maskedTextBoxNascimento.TabIndex = 4;
+            this.maskedTextBoxNascimento.TabIndex = 11;
             // 
             // textBoxCpf
             // 
             this.textBoxCpf.Location = new System.Drawing.Point(239, 89);
             this.textBoxCpf.Name = "textBoxCpf";
             this.textBoxCpf.Size = new System.Drawing.Size(151, 20);
-            this.textBoxCpf.TabIndex = 5;
+            this.textBoxCpf.TabIndex = 10;
             // 
             // textBoxNome
             // 
             this.textBoxNome.Location = new System.Drawing.Point(117, 40);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(461, 20);
-            this.textBoxNome.TabIndex = 2;
+            this.textBoxNome.TabIndex = 8;
             // 
             // buttonAdicionarModificar
             // 
             this.buttonAdicionarModificar.Location = new System.Drawing.Point(492, 86);
             this.buttonAdicionarModificar.Name = "buttonAdicionarModificar";
             this.buttonAdicionarModificar.Size = new System.Drawing.Size(86, 23);
-            this.buttonAdicionarModificar.TabIndex = 7;
+            this.buttonAdicionarModificar.TabIndex = 6;
             this.buttonAdicionarModificar.Text = "Adicionar";
             this.buttonAdicionarModificar.UseVisualStyleBackColor = true;
             // 
@@ -125,7 +125,7 @@
             this.buttonLimparCancelar.Location = new System.Drawing.Point(399, 86);
             this.buttonLimparCancelar.Name = "buttonLimparCancelar";
             this.buttonLimparCancelar.Size = new System.Drawing.Size(87, 23);
-            this.buttonLimparCancelar.TabIndex = 6;
+            this.buttonLimparCancelar.TabIndex = 5;
             this.buttonLimparCancelar.Text = "Limpar";
             this.buttonLimparCancelar.UseVisualStyleBackColor = true;
             // 
@@ -179,14 +179,14 @@
             this.textBoxPesquisar.Location = new System.Drawing.Point(13, 145);
             this.textBoxPesquisar.Name = "textBoxPesquisar";
             this.textBoxPesquisar.Size = new System.Drawing.Size(486, 20);
-            this.textBoxPesquisar.TabIndex = 8;
+            this.textBoxPesquisar.TabIndex = 14;
             // 
             // buttonPesquisar
             // 
             this.buttonPesquisar.Location = new System.Drawing.Point(505, 145);
             this.buttonPesquisar.Name = "buttonPesquisar";
             this.buttonPesquisar.Size = new System.Drawing.Size(86, 23);
-            this.buttonPesquisar.TabIndex = 9;
+            this.buttonPesquisar.TabIndex = 14;
             this.buttonPesquisar.Text = "Pesquisar";
             this.buttonPesquisar.UseVisualStyleBackColor = true;
             this.buttonPesquisar.Click += new System.EventHandler(this.buttonPesquisar_Click);
@@ -202,14 +202,14 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(595, 209);
-            this.dataGridView1.TabIndex = 12;
+            this.dataGridView1.TabIndex = 15;
             // 
             // buttonEditarAdicionar
             // 
             this.buttonEditarAdicionar.Location = new System.Drawing.Point(429, 386);
             this.buttonEditarAdicionar.Name = "buttonEditarAdicionar";
             this.buttonEditarAdicionar.Size = new System.Drawing.Size(87, 23);
-            this.buttonEditarAdicionar.TabIndex = 10;
+            this.buttonEditarAdicionar.TabIndex = 16;
             this.buttonEditarAdicionar.Text = "Editar";
             this.buttonEditarAdicionar.UseVisualStyleBackColor = true;
             // 
@@ -218,7 +218,7 @@
             this.buttonExcluir.Location = new System.Drawing.Point(521, 386);
             this.buttonExcluir.Name = "buttonExcluir";
             this.buttonExcluir.Size = new System.Drawing.Size(87, 23);
-            this.buttonExcluir.TabIndex = 11;
+            this.buttonExcluir.TabIndex = 17;
             this.buttonExcluir.Text = "Excluir";
             this.buttonExcluir.UseVisualStyleBackColor = true;
             this.buttonExcluir.Click += new System.EventHandler(this.buttonExcluir_Click);

@@ -85,7 +85,7 @@ namespace ProjetoApresentacaoEM.EM.Repository.Testes
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Remocao com sucesso")]
         [NUnit.Framework.CategoryAttribute("remocao")]
-        [NUnit.Framework.TestCaseAttribute("8", "DeletadoSerei", "611.814.500-80", "22/08/1985", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("8", "DeletadoSerei", "61181450080", "22/08/1985", "1", null)]
         public virtual void RemocaoComSucesso(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -141,7 +141,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Erro matricula inexistente")]
         [NUnit.Framework.CategoryAttribute("remocao")]
-        [NUnit.Framework.TestCaseAttribute("9", "Joao", "149.367.350-51", "18/01/1997", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("9", "Joao", "14936735051", "18/01/1997", "0", null)]
         public virtual void ErroMatriculaInexistente(string matricula, string nome, string cpf, string nascimento, string sexo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
