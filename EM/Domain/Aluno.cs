@@ -92,6 +92,12 @@ namespace ProjetoApresentacaoEM.EM.Domain
 
         public override string ToString()
         {
+            if (string.IsNullOrEmpty(CPF))
+            {
+
+                return $"({Matricula},\'{Nome}\',NULL,\'{Nascimento:yyyy-MM-dd}\',{(int)Sexo})";
+            }
+
             return $"({Matricula},\'{Nome}\',\'{CPF}\',\'{Nascimento:yyyy-MM-dd}\',{(int)Sexo})";
         }
     }

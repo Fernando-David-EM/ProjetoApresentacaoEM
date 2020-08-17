@@ -1,5 +1,6 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using ProjetoApresentacaoEM.EM.Domain;
+using ProjetoApresentacaoEM.EM.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             textBoxMatricula.Text = aluno.Matricula.ToString();
             textBoxNome.Text = aluno.Nome;
             comboBoxSexo.SelectedIndex = (int)aluno.Sexo;
-            textBoxCpf.Text = aluno.CPF;
+            textBoxCpf.Text = ValidaCpf.RemovePontuacaoCpf(aluno.CPF);
             maskedTextBoxNascimento.Text = aluno.Nascimento.ToString("dd/MM/yyyy");
         }
 
@@ -188,10 +189,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
             MessageBox.Show("Aluno alterado com sucesso!");
 
-            var pos = _bindingSource.Position;
-
-            _bindingSource.RemoveCurrent();
-            _bindingSource.Insert(pos, aluno);
+            InicializaDataGridView();
         }
 
         private void buttonPesquisar_Click(object sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using ProjetoApresentacaoEM.EM.Domain;
 using ProjetoApresentacaoEM.EM.Repository;
+using ProjetoApresentacaoEM.EM.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
     {
         private bool _teclaNaoNumerica = false;
         private bool _teclaEhDeApagar = false;
-        private EnumeradorEstadosTela _estadoTela = EnumeradorEstadosTela.Adicionar;
+        private EnumeradorEstadosTela _estadoTela = EnumeradorEstadosTela.Editar;
         private readonly RepositorioAluno _repositorio = new RepositorioAluno();
         private readonly BindingSource _bindingSource = new BindingSource();
 
@@ -40,7 +41,10 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void InicializaDataGridView()
         {
-            AtribuiListaAoBindingSource(_repositorio.GetAll());
+            AtribuiListaAoBindingSource(
+                _repositorio
+                .GetAll()
+                .OrderBy(x => x.Matricula));
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.DataSource = _bindingSource;
@@ -84,9 +88,9 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
 
         private void AlternaEstadoDaTela()
         {
-            if (_estadoTela == EnumeradorEstadosTela.Adicionar)
+            if (_estadoTela == EnumeradorEstadosTela.Editar)
             {
-                _estadoTela = EnumeradorEstadosTela.Editar;
+                _estadoTela = EnumeradorEstadosTela.Adicionar;
 
                 DefineBotoesAdicionar();
 
@@ -94,7 +98,7 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             }
             else
             {
-                _estadoTela = EnumeradorEstadosTela.Adicionar;
+                _estadoTela = EnumeradorEstadosTela.Editar;
 
                 DefineBotoesAlterar();
 
@@ -147,7 +151,11 @@ namespace ProjetoApresentacaoEM.EM.WindowsForms
             var nome = textBoxNome.Text;
             var sexo = (EnumeradorSexo)comboBoxSexo.SelectedIndex;
             var nascimento = DateTime.Parse(maskedTextBoxNascimento.Text);
-            var cpf = textBoxCpf.Text;
+            if (string.IsNullOrEmpty(textBoxCpf.Text))
+            {
+                return new Aluno(matricula, nome, null, nascimento, sexo);
+            }
+            var cpf = ValidaCpf.AdicionaPontuacaoCpf(textBoxCpf.Text);
 
             return new Aluno(matricula, nome, cpf, nascimento, sexo);
         }
