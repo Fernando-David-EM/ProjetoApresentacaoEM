@@ -7,7 +7,7 @@ Contexto: Já conectado
 	Dado que estou conectado no banco de dados
 
 @pesquisa
-Cenario: Pesquisa total com sucesso
+Cenario: Pesquisar total com sucesso
 	E introduzo as informações de um aluno
 		| matricula | nome     | cpf            | nascimento | sexo |
 		| 2         | Fernando | 586.811.790-55 | 10/05/1990 | 0    |
@@ -18,7 +18,7 @@ Cenario: Pesquisa total com sucesso
 		| 2         | Fernando | 586.811.790-55 | 10/05/1990 | 0    |
 
 @pesquisa
-Cenario: Pesquisa por matricula com sucesso
+Cenario: Pesquisar por matricula com sucesso
 	E introduzo as informações de um aluno <matricula> <nome> <cpf> <nascimento> <sexo>
 	Entao o aluno deve ser inserido com sucesso
 	E devo receber o mesmo aluno ao pesquisar pela matricula 2
@@ -28,7 +28,7 @@ Cenario: Pesquisa por matricula com sucesso
 		| 2         | Joao | 149.367.350-51 | 18/01/1997 | 0    |
 
 @pesquisa
-Cenario: Pesquisa por matricula errada
+Cenario: Pesquisar por matricula errada
 	E introduzo as informações de um aluno <matricula> <nome> <cpf> <nascimento> <sexo>
 	Entao nada deve acontecer ao procurar por uma matricula 20
 
@@ -37,7 +37,7 @@ Cenario: Pesquisa por matricula errada
 		| 3         | Jorge | 613.997.260-48 | 07/08/2000 | 0    |
 
 @pesquisa
-Cenario: Pesquisa por matricula com sucesso com LINQ
+Cenario: Pesquisar por matricula com sucesso com LINQ
 	E introduzo as informações de um aluno <matricula> <nome> <cpf> <nascimento> <sexo>
 	Entao o aluno deve ser inserido com sucesso
 	E devo receber atraves do LINQ o mesmo aluno ao pesquisar pela matricula 2
@@ -47,7 +47,7 @@ Cenario: Pesquisa por matricula com sucesso com LINQ
 		| 2         | Joao | 149.367.350-51 | 18/01/1997 | 0    |
 
 @pesquisa
-Cenario: Pesquisa por nome do aluno com sucesso
+Cenario: Pesquisar por nome do aluno com sucesso
 	E introduzo as informações de um aluno <matricula> <nome> <cpf> <nascimento> <sexo>
 	Entao o aluno deve ser inserido com sucesso
 	E devo receber o mesmo aluno ao pesquisar pelo nome "Fernando"
@@ -57,7 +57,7 @@ Cenario: Pesquisa por nome do aluno com sucesso
 		| 2         | Fernando | 586.811.790-55 | 10/05/1990 | 0    |
 
 @pesquisa
-Cenario: Pesquisa por parte de nomes de alunos com sucesso
+Cenario: Pesquisar por parte de nomes de alunos com sucesso
 	E introduzo varios alunos
 		| matricula | nome     | cpf            | nascimento | sexo |
 		| 2         | Fernanda | 586.811.790-55 | 10/05/1990 | 1    |

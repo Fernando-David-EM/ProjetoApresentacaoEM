@@ -7,7 +7,7 @@ Contexto: Já conectado
 	Dado que estou conectado no banco de dados
 
 @alteracao
-Cenario: Alteracao com sucesso
+Cenario: Alterar com sucesso
 	E introduzo as informações de um aluno <matricula> <nome> <cpf> <nascimento> <sexo>
 	Entao o aluno deve ser alterado com sucesso
 	E o aluno deve estar no banco
@@ -17,7 +17,7 @@ Cenario: Alteracao com sucesso
 		| 1         | PaulaAlterada | 613.997.260-48 | 05/10/1990 | 1    |
 
 @alteracao
-Cenario: Erro novo cpf existente
+Cenario: Alterar com novo cpf existente
 	E introduzo um aluno que tinha um cpf <cpf> <matricula> <nome> <nascimento> <sexo>
 	E troco para um "613.997.260-48" existente
 	Entao devo receber uma mensagem de erro
